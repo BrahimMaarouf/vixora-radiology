@@ -1,0 +1,19 @@
+# Environment
+.venv/
+
+# Data folder - too big for GitHub
+data/
+
+# Virtual environment
+venv/
+ai_cuda_env/
+__pycache__/
+*.pyc
+
+# Models
+models/*.h5
+models/*.pt
+
+# OS files
+.DS_Store
+Thumbs.db

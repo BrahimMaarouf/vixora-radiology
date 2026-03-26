@@ -11,9 +11,13 @@ __pycache__/
 *.pyc
 
 # Models
+
 models/*.h5
 models/*.pt
 
 # OS files
 .DS_Store
 Thumbs.db
+
+# personal file "brahim maarouf"
+RoadMap.md

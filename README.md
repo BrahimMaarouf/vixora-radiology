@@ -37,12 +37,15 @@ pip install torch torchvision torchaudio --index-url https://download.pytorch.or
 
 ## Project Structure
 
-vixora-radiology/  
-├── data/  
-│   └── raw/  
-│       └── chest_xray/   # train / test / val  
-├── notebooks/  
-├── src/  
-├── main.py  
-├── requirements.txt  
-├── .gitignore  
+```
+    vixora-radiology/
+    ├── data/
+    │   └── raw/
+    │       └── chest_xray/   # train / test / val
+    ├── notebooks/
+    ├── src/
+    ├── main.py
+    ├── requirements.txt
+    ├── .gitignore
+
+```

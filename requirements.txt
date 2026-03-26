@@ -21,14 +21,14 @@ matplotlib==3.9.2
 seaborn==0.13.2
 scikit-learn==1.5.1
 
-# Web Interface (recommended for your PFA)
+# Web Interface (recommended for PFA project by grok)
 streamlit==1.38.0
 
 # Utilities
 tqdm==4.66.5
 joblib==1.4.2
 
-# Grad-CAM Support (important for your project)
+# Grad-CAM Support (important for the project)
 tf-keras==2.17.0
 
 # Optional but useful

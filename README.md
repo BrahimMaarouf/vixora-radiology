@@ -1,42 +1,48 @@
 # vixora-radiology
-AI system for chest X-ray analysis using deep learning. Classifies images (Normal/Pneumonia), outputs confidence score, and provides Grad-CAM visualization. Built with CNNs and transfer learning (ResNet, VGG, EfficientNet) with a simple web interface for fast, reliable diagnosis support.
+
+AI system for chest X-ray analysis using deep learning. Classifies images (Normal/Pneumonia), outputs confidence score, and provides Grad-CAM visualization. Built with CNNs and transfer learning (ResNet, VGG, EfficientNet) with a simple web interface for fast and reliable diagnosis support.
 
 > [!NOTE]
-> Dataset we are using in this project : https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+> Dataset used in this project: https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
 
+## Setup
 
-## creating ENV & Installing requirement for vixora-radiology
- - py -3.11 -m venv .venv > we use 3.11 python version most stable So make sure U have it installed
-   .venv\Scripts\activate
- - python --version
- - python -m pip install --upgrade pip
- - pip install -r requirements.txt
+### Create virtual environment (Python 3.11 recommended)
 
-## Test If everything is working well
- - python -c "import tensorflow as tf; print('TensorFlow version:', tf.__version__); print('GPU available:', tf.config.list_physical_devices('GPU'))"
+py -3.11 -m venv .venv  
+.venv\Scripts\activate  
+python --version  
 
- - python -c "import torch; print('PyTorch version:', torch.__version__); print('CUDA available:', torch.cuda.is_available())"
+### Install dependencies
 
- - python -c "import streamlit; print('Streamlit OK')"
+python -m pip install --upgrade pip  
+pip install -r requirements.txt  
 
- - python -c "import albumentations; print('Albumentations OK')"
+## Verify installation
 
-### If you want gpu instead of cpu 
- - pip uninstall torch torchvision torchaudio -y
- - pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121
- > [!WARNING]
- > Requirements : 
-    > NVIDIA GPU
-    > CUDA drivers installed
+python -c "import tensorflow as tf; print('TensorFlow:', tf.__version__, '| GPU:', tf.config.list_physical_devices('GPU'))"  
+python -c "import torch; print('PyTorch:', torch.__version__, '| CUDA:', torch.cuda.is_available())"  
+python -c "import streamlit; print('Streamlit OK')"  
+python -c "import albumentations; print('Albumentations OK')"  
 
-## Project Current Structure
+## Enable GPU (PyTorch only)
 
-vixora-radiology/
-├── data/
-│   └── raw/
-│       └── chest_xray/     ← train, test, val here
-├── notebooks/
-├── src/
-├── main.py
-├── requirements.txt
-├── .gitignore
+pip uninstall torch torchvision torchaudio -y  
+pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu121  
+
+> [!WARNING]
+> Requirements:
+> - NVIDIA GPU
+> - Installed NVIDIA drivers (CUDA supported)
+
+## Project Structure
+
+vixora-radiology/  
+├── data/  
+│   └── raw/  
+│       └── chest_xray/   # train / test / val  
+├── notebooks/  
+├── src/  
+├── main.py  
+├── requirements.txt  
+├── .gitignore  

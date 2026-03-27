@@ -3,6 +3,7 @@
 
 # Data folder - too big for GitHub
 data/
+data/*
 
 # Virtual environment
 venv/

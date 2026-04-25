@@ -1,0 +1,17 @@
+Pneumoconiosis                      => https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection
+atelectasis                         => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+cardiomegaly                        => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+consolidation                       => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+edema                               => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+effusion                            => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+emphysema                           => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+fibrosis                            => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+hernia                              => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+infiltration                        => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+mass                                => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+nodule                              => https://www.kaggle.com/datasets/raddar/nodules-in-chest-xrays-jsrt && https://www.kaggle.com/datasets/nih-chest-xrays/data 
+normal                              => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+pleural_thickening                  => https://www.kaggle.com/c/vinbigdata-chest-xray-abnormalities-detection
+pneumonia                           => https://www.kaggle.com/datasets/paultimothymooney/chest-xray-pneumonia
+pneumothorax                        => https://www.google.com/search?q=https://www.kaggle.com/datasets/nih-clinical-center/chest-xray14
+tuberculosis, Cavitation            => https://www.kaggle.com/datasets/tawsifurrahman/tuberculosis-tb-chest-xray-dataset

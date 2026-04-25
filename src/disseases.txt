@@ -1,0 +1,109 @@
+# Chest X-ray Taxonomy — Status + Type + Label Nature
+
+Legend:
+- Status: DONE / NOT DONE (based on your collected Kaggle sources)
+- Type:
+  - Disease (specific pathology)
+  - Condition/Syndrome (state with multiple causes)
+  - Radiological Finding (image pattern, not a diagnosis)
+  - Injury/Trauma
+  - Device/Artifact
+  - Anatomical Variant/Deformity
+- Label nature:
+  - Single = can be treated as single-label (after filtering)
+  - Multi = commonly co-occurs (multi-label in datasets)
+
+---
+
+## Lung Parenchyma (Lung Tissue)
+
+| Item                | Status   | Type                 | Label Nature | Notes                                    |
+|------               |--------  |------                |--------------|-------                                   |
+| Pneumonia           | DONE     | Disease              | Single       | Strong datasets (Kaggle pneumonia, RSNA) |
+| Tuberculosis        | DONE     | Disease              | Single       | TB dataset available                     |
+| Lung Nodule         | DONE     | Radiological Finding | Single       | JSRT + NIH                               |
+| Lung Mass           | DONE     | Radiological Finding | Single       | NIH                                      |
+| Lung Cancer         | DONE     | Disease (proxy)      | Multi        | Approximated via Mass/Nodule             |
+| Atelectasis         | DONE     | Condition            | Multi        | NIH label                                |
+| Emphysema (COPD)    | DONE     | Disease              | Multi        | NIH label                                |
+| Cystic Fibrosis     | DONE     | Disease              | Multi        | Weak/no direct Kaggle ground truth       |
+| Pulmonary Edema     | DONE     | Condition            | Multi        | NIH/CheXpert                             |
+| Pulmonary Fibrosis  | DONE     | Disease              | Multi        | NIH label                                |
+| Infiltration        | DONE     | Radiological Finding | Multi        | NIH label                                |
+| Consolidation       | DONE     | Radiological Finding | Multi        | NIH label                                |
+| Pneumoconiosis      | DONE     | Disease              | Multi        | VinBigData                               |
+| Cavitation          | DONE     | Radiological Finding | Multi        | TB proxy                                 |
+
+---
+
+## Pleural Space
+
+| Item                  | Status   | Type                 | Label Nature | Notes           |
+|------                 |--------  |------                |--------------|-------          |
+| Pneumothorax          | DONE     | Condition            | Single       | SIIM / NIH      |
+| Pleural Effusion      | DONE     | Condition            | Multi        | NIH             |
+| Pleural Thickening    | DONE     | Radiological Finding | Multi        | NIH / VinBig    |
+| Pleural Calcification | NOT DONE | Radiological Finding | Multi        | No dataset      |
+| Empyema               | NOT DONE | Disease              | Multi        | Not labeled     |
+
+---
+
+## Cardiovascular (Heart & Vessels)
+
+| Item                     | Status   | Type                 | Label Nature | Notes                      |
+|------                    |--------  |------                |--------------|-------                     |
+| Cardiomegaly             | DONE     | Condition            | Multi        | NIH                        |
+| Congestive Heart Failure | DONE     | Syndrome             | Multi        | Edema + Cardiomegaly proxy |
+| Aortic Aneurysm          | NOT DONE | Disease              | Multi        | Not in X-ray datasets      |
+| Aortic Dissection        | NOT DONE | Disease              | Multi        | CT required                |
+| Pericardial Effusion     | NOT DONE | Condition            | Multi        | Rare in X-ray              |
+| Dextrocardia             | NOT DONE | Anatomical Variant   | Single       | Not labeled                |
+| Aortic Calcification     | NOT DONE | Radiological Finding | Multi        | Not labeled                |
+| Pulmonary Hypertension   | NOT DONE | Condition            | Multi        | Weak signal in X-ray       |
+
+---
+
+## Mediastinum & Hilum
+
+| Item                  | Status    | Type                 | Label Nature | Notes        |
+|------                 |--------   |------                |--------------|-------       |
+| Hilar Lymphadenopathy | NOT DONE  | Radiological Finding | Multi        | Not labeled  |
+| Mediastinal Mass      | DONE      | Radiological Finding | Multi        | NIH "Mass"   |
+| Pneumomediastinum     | NOT DONE  | Condition            | Multi        | No dataset   |
+| Hiatal Hernia         | DONE      | Condition            | Single       | NIH "Hernia" |
+
+---
+
+## Skeletal & Soft Tissue
+
+| Item                           | Status   | Type            | Label Nature | Notes                 |
+|------                          |--------  |------           |--------------|-------                |
+| Rib Fracture                   | DONE     | Injury          | Single       | Kaggle rib fracture   |
+| Clavicle Fracture              | NOT DONE | Injury          | Single       | Not in chest datasets |
+| Vertebral Compression Fracture | NOT DONE | Injury          | Single       | Not labeled           |
+| Scoliosis / Kyphosis           | NOT DONE | Deformity       | Single       | Not labeled           |
+| Pectus Excavatum / Carinatum   | NOT DONE | Deformity       | Single       | Not labeled           |
+| Osteolytic Lesions             | NOT DONE | Disease/Finding | Multi        | Not labeled           |
+| Subcutaneous Emphysema         | NOT DONE | Condition       | Multi        | Rare                  |
+
+---
+
+
+---
+
+# Ground Truth Summary
+
+- Strong supervised (clean):  
+  Pneumonia, Pneumothorax, Tuberculosis, Rib Fracture
+
+- Weak / multi-label (NIH, VinBig):  
+  Atelectasis, Effusion, Mass, Nodule, Fibrosis, Cardiomegaly, etc.
+---
+
+# Key Constraint
+
+Dataset is **not disease classification**.  
+
+It is:
+
+> Chest X-ray pattern + condition detection (mixed ontology, multi-label reality)

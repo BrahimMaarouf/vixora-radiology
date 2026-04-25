@@ -1,0 +1,1289 @@
+2026-04-25 15:54:03,312 | INFO | ======================================================================
+2026-04-25 15:54:03,312 | INFO | Chest X-ray Multi-Class Diagnostic System — Training
+2026-04-25 15:54:03,312 | INFO | Device : cuda
+2026-04-25 15:54:03,312 | INFO | Epochs : 50 | Batch: 32
+2026-04-25 15:54:03,312 | INFO | ======================================================================
+2026-04-25 15:54:03,331 | INFO | [train] Loaded 3323 samples across 6 classes.
+2026-04-25 15:54:03,335 | INFO | [val] Loaded 412 samples across 6 classes.
+2026-04-25 15:54:03,338 | INFO | [test] Loaded 411 samples across 6 classes.
+2026-04-25 15:54:05,873 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:54:05,873 | INFO | Epoch 1/50  |  LR=3.00e-04
+2026-04-25 15:54:07,900 | INFO |   [25/103] loss=2.1338
+2026-04-25 15:54:08,836 | INFO |   [50/103] loss=1.9446
+2026-04-25 15:54:09,771 | INFO |   [75/103] loss=2.4064
+2026-04-25 15:54:10,728 | INFO |   [100/103] loss=2.3465
+2026-04-25 15:54:10,869 | INFO | [TRAIN] loss=2.0150  macro_F1=0.3323
+2026-04-25 15:54:11,476 | INFO | [VAL]   loss=1.6995  macro_F1=0.3686
+2026-04-25 15:54:11,476 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.36      0.51      0.42        70
+   pneumonia       0.24      0.17      0.20        70
+pneumothorax       0.22      0.07      0.11        68
+tuberculosis       0.80      0.94      0.87        69
+cardiomegaly       0.34      0.18      0.23        68
+    effusion       0.30      0.54      0.38        67
+
+    accuracy                           0.40       412
+   macro avg       0.38      0.40      0.37       412
+weighted avg       0.38      0.40      0.37       412
+
+2026-04-25 15:54:11,547 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:54:11,547 | INFO | ★ New best val macro_F1 = 0.3686
+2026-04-25 15:54:11,547 | INFO | Epoch time: 5.7s  |  best_val_F1=0.3686
+2026-04-25 15:54:11,547 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:54:11,547 | INFO | Epoch 2/50  |  LR=3.00e-04
+2026-04-25 15:54:11,943 | INFO |   [25/103] loss=1.9163
+2026-04-25 15:54:12,877 | INFO |   [50/103] loss=1.7783
+2026-04-25 15:54:13,823 | INFO |   [75/103] loss=1.8371
+2026-04-25 15:54:14,771 | INFO |   [100/103] loss=2.0257
+2026-04-25 15:54:14,910 | INFO | [TRAIN] loss=1.7823  macro_F1=0.3952
+2026-04-25 15:54:15,492 | INFO | [VAL]   loss=1.5989  macro_F1=0.4219
+2026-04-25 15:54:15,492 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.39      0.54      0.46        70
+   pneumonia       0.21      0.09      0.12        70
+pneumothorax       0.34      0.21      0.26        68
+tuberculosis       0.97      0.93      0.95        69
+cardiomegaly       0.35      0.38      0.37        68
+    effusion       0.31      0.49      0.38        67
+
+    accuracy                           0.44       412
+   macro avg       0.43      0.44      0.42       412
+weighted avg       0.43      0.44      0.42       412
+
+2026-04-25 15:54:15,565 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:54:15,565 | INFO | ★ New best val macro_F1 = 0.4219
+2026-04-25 15:54:15,565 | INFO | Epoch time: 4.0s  |  best_val_F1=0.4219
+2026-04-25 15:54:15,565 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:54:15,565 | INFO | Epoch 3/50  |  LR=2.99e-04
+2026-04-25 15:54:16,653 | INFO |   [25/103] loss=1.6235
+2026-04-25 15:54:17,611 | INFO |   [50/103] loss=1.6390
+2026-04-25 15:54:18,558 | INFO |   [75/103] loss=1.5949
+2026-04-25 15:54:19,500 | INFO |   [100/103] loss=1.3958
+2026-04-25 15:54:19,635 | INFO | [TRAIN] loss=1.6674  macro_F1=0.4325
+2026-04-25 15:54:20,206 | INFO | [VAL]   loss=1.5377  macro_F1=0.4014
+2026-04-25 15:54:20,206 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.42      0.30      0.35        70
+   pneumonia       0.20      0.21      0.21        70
+pneumothorax       0.30      0.21      0.24        68
+tuberculosis       0.87      1.00      0.93        69
+cardiomegaly       0.34      0.34      0.34        68
+    effusion       0.28      0.40      0.33        67
+
+    accuracy                           0.41       412
+   macro avg       0.40      0.41      0.40       412
+weighted avg       0.40      0.41      0.40       412
+
+2026-04-25 15:54:20,207 | INFO | Epoch time: 4.6s  |  best_val_F1=0.4219
+2026-04-25 15:54:20,208 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 15:54:20,208 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:54:20,208 | INFO | Epoch 4/50  |  LR=2.97e-04
+2026-04-25 15:54:20,209 | INFO | [warm-up] Backbone unfrozen — full fine-tuning begins.
+2026-04-25 15:54:23,427 | INFO |   [25/103] loss=2.1328
+2026-04-25 15:54:26,406 | INFO |   [50/103] loss=1.6275
+2026-04-25 15:54:29,386 | INFO |   [75/103] loss=1.5929
+2026-04-25 15:54:32,239 | INFO |   [100/103] loss=1.5365
+2026-04-25 15:54:32,601 | INFO | [TRAIN] loss=1.6428  macro_F1=0.4411
+2026-04-25 15:54:33,161 | INFO | [VAL]   loss=1.5425  macro_F1=0.4583
+2026-04-25 15:54:33,161 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.46      0.46      0.46        70
+   pneumonia       0.31      0.13      0.18        70
+pneumothorax       0.42      0.32      0.36        68
+tuberculosis       0.91      0.97      0.94        69
+cardiomegaly       0.38      0.43      0.40        68
+    effusion       0.33      0.54      0.41        67
+
+    accuracy                           0.47       412
+   macro avg       0.47      0.47      0.46       412
+weighted avg       0.47      0.47      0.46       412
+
+2026-04-25 15:54:33,347 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:54:33,347 | INFO | ★ New best val macro_F1 = 0.4583
+2026-04-25 15:54:33,348 | INFO | Epoch time: 13.1s  |  best_val_F1=0.4583
+2026-04-25 15:54:33,348 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:54:33,348 | INFO | Epoch 5/50  |  LR=8.94e-05
+2026-04-25 15:54:36,463 | INFO |   [25/103] loss=1.4084
+2026-04-25 15:54:39,266 | INFO |   [50/103] loss=1.4365
+2026-04-25 15:54:42,064 | INFO |   [75/103] loss=1.4503
+2026-04-25 15:54:44,228 | INFO |   [100/103] loss=1.5134
+2026-04-25 15:54:44,589 | INFO | [TRAIN] loss=1.5651  macro_F1=0.4699
+2026-04-25 15:54:45,171 | INFO | [VAL]   loss=1.5365  macro_F1=0.4757
+2026-04-25 15:54:45,171 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.42      0.56      0.48        70
+   pneumonia       0.28      0.21      0.24        70
+pneumothorax       0.47      0.43      0.45        68
+tuberculosis       0.92      0.97      0.94        69
+cardiomegaly       0.42      0.51      0.46        68
+    effusion       0.35      0.24      0.28        67
+
+    accuracy                           0.49       412
+   macro avg       0.47      0.49      0.48       412
+weighted avg       0.47      0.49      0.48       412
+
+2026-04-25 15:54:45,364 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:54:45,365 | INFO | ★ New best val macro_F1 = 0.4757
+2026-04-25 15:54:45,521 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_005.pth
+2026-04-25 15:54:45,521 | INFO | Epoch time: 12.2s  |  best_val_F1=0.4757
+2026-04-25 15:54:45,521 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:54:45,521 | INFO | Epoch 6/50  |  LR=8.86e-05
+2026-04-25 15:54:48,471 | INFO |   [25/103] loss=1.6366
+2026-04-25 15:54:51,267 | INFO |   [50/103] loss=1.9440
+2026-04-25 15:54:54,062 | INFO |   [75/103] loss=1.5195
+2026-04-25 15:54:56,852 | INFO |   [100/103] loss=1.4199
+2026-04-25 15:54:57,216 | INFO | [TRAIN] loss=1.4883  macro_F1=0.5057
+2026-04-25 15:54:57,796 | INFO | [VAL]   loss=1.4590  macro_F1=0.5123
+2026-04-25 15:54:57,796 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.53      0.51      0.52        70
+   pneumonia       0.27      0.24      0.26        70
+pneumothorax       0.45      0.53      0.49        68
+tuberculosis       0.93      0.99      0.96        69
+cardiomegaly       0.60      0.46      0.52        68
+    effusion       0.32      0.36      0.34        67
+
+    accuracy                           0.51       412
+   macro avg       0.52      0.51      0.51       412
+weighted avg       0.52      0.51      0.51       412
+
+2026-04-25 15:54:57,997 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:54:57,997 | INFO | ★ New best val macro_F1 = 0.5123
+2026-04-25 15:54:57,997 | INFO | Epoch time: 12.5s  |  best_val_F1=0.5123
+2026-04-25 15:54:57,997 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:54:57,997 | INFO | Epoch 7/50  |  LR=8.76e-05
+2026-04-25 15:55:00,935 | INFO |   [25/103] loss=1.5555
+2026-04-25 15:55:03,739 | INFO |   [50/103] loss=1.7062
+2026-04-25 15:55:06,555 | INFO |   [75/103] loss=1.7148
+2026-04-25 15:55:09,368 | INFO |   [100/103] loss=1.4723
+2026-04-25 15:55:09,733 | INFO | [TRAIN] loss=1.4593  macro_F1=0.5145
+2026-04-25 15:55:10,321 | INFO | [VAL]   loss=1.4917  macro_F1=0.5117
+2026-04-25 15:55:10,321 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.49      0.50      0.49        70
+   pneumonia       0.33      0.16      0.21        70
+pneumothorax       0.60      0.38      0.47        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.43      0.59      0.50        68
+    effusion       0.33      0.51      0.40        67
+
+    accuracy                           0.52       412
+   macro avg       0.53      0.52      0.51       412
+weighted avg       0.53      0.52      0.51       412
+
+2026-04-25 15:55:10,321 | INFO | Epoch time: 12.3s  |  best_val_F1=0.5123
+2026-04-25 15:55:10,322 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 15:55:10,322 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:55:10,322 | INFO | Epoch 8/50  |  LR=8.65e-05
+2026-04-25 15:55:13,299 | INFO |   [25/103] loss=1.3268
+2026-04-25 15:55:15,485 | INFO |   [50/103] loss=1.2710
+2026-04-25 15:55:18,326 | INFO |   [75/103] loss=1.5198
+2026-04-25 15:55:21,154 | INFO |   [100/103] loss=0.9476
+2026-04-25 15:55:21,524 | INFO | [TRAIN] loss=1.3697  macro_F1=0.5544
+2026-04-25 15:55:22,098 | INFO | [VAL]   loss=1.3476  macro_F1=0.5599
+2026-04-25 15:55:22,099 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.57      0.50      0.53        70
+   pneumonia       0.32      0.33      0.32        70
+pneumothorax       0.54      0.54      0.54        68
+tuberculosis       1.00      0.99      0.99        69
+cardiomegaly       0.55      0.65      0.59        68
+    effusion       0.39      0.36      0.37        67
+
+    accuracy                           0.56       412
+   macro avg       0.56      0.56      0.56       412
+weighted avg       0.56      0.56      0.56       412
+
+2026-04-25 15:55:22,299 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:55:22,299 | INFO | ★ New best val macro_F1 = 0.5599
+2026-04-25 15:55:22,299 | INFO | Epoch time: 12.0s  |  best_val_F1=0.5599
+2026-04-25 15:55:22,299 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:55:22,299 | INFO | Epoch 9/50  |  LR=8.52e-05
+2026-04-25 15:55:25,282 | INFO |   [25/103] loss=1.1068
+2026-04-25 15:55:28,120 | INFO |   [50/103] loss=1.5213
+2026-04-25 15:55:30,985 | INFO |   [75/103] loss=1.1488
+2026-04-25 15:55:33,839 | INFO |   [100/103] loss=1.2399
+2026-04-25 15:55:34,216 | INFO | [TRAIN] loss=1.3076  macro_F1=0.5837
+2026-04-25 15:55:34,804 | INFO | [VAL]   loss=1.4155  macro_F1=0.5079
+2026-04-25 15:55:34,804 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.52      0.43      0.47        70
+   pneumonia       0.26      0.16      0.20        70
+pneumothorax       0.53      0.37      0.43        68
+tuberculosis       0.96      0.99      0.97        69
+cardiomegaly       0.46      0.59      0.52        68
+    effusion       0.37      0.60      0.46        67
+
+    accuracy                           0.52       412
+   macro avg       0.52      0.52      0.51       412
+weighted avg       0.52      0.52      0.51       412
+
+2026-04-25 15:55:34,805 | INFO | Epoch time: 12.5s  |  best_val_F1=0.5599
+2026-04-25 15:55:34,806 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 15:55:34,807 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:55:34,807 | INFO | Epoch 10/50  |  LR=8.38e-05
+2026-04-25 15:55:37,815 | INFO |   [25/103] loss=1.0941
+2026-04-25 15:55:40,702 | INFO |   [50/103] loss=1.2562
+2026-04-25 15:55:43,601 | INFO |   [75/103] loss=1.1354
+2026-04-25 15:55:46,488 | INFO |   [100/103] loss=1.2738
+2026-04-25 15:55:46,865 | INFO | [TRAIN] loss=1.2663  macro_F1=0.5951
+2026-04-25 15:55:46,801 | INFO | [VAL]   loss=1.4258  macro_F1=0.5455
+2026-04-25 15:55:46,801 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.53      0.56      0.54        70
+   pneumonia       0.28      0.19      0.22        70
+pneumothorax       0.57      0.51      0.54        68
+tuberculosis       1.00      0.97      0.99        69
+cardiomegaly       0.51      0.57      0.54        68
+    effusion       0.39      0.51      0.44        67
+
+    accuracy                           0.55       412
+   macro avg       0.55      0.55      0.55       412
+weighted avg       0.55      0.55      0.55       412
+
+2026-04-25 15:55:46,974 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_010.pth
+2026-04-25 15:55:46,975 | INFO | Epoch time: 12.2s  |  best_val_F1=0.5599
+2026-04-25 15:55:46,975 | INFO | [early_stop] No improvement for 2/8 epochs.
+2026-04-25 15:55:46,975 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:55:46,975 | INFO | Epoch 11/50  |  LR=8.22e-05
+2026-04-25 15:55:50,016 | INFO |   [25/103] loss=1.1628
+2026-04-25 15:55:52,945 | INFO |   [50/103] loss=1.3360
+2026-04-25 15:55:55,856 | INFO |   [75/103] loss=1.5801
+2026-04-25 15:55:58,785 | INFO |   [100/103] loss=1.3501
+2026-04-25 15:55:59,168 | INFO | [TRAIN] loss=1.2279  macro_F1=0.6201
+2026-04-25 15:55:59,768 | INFO | [VAL]   loss=1.4113  macro_F1=0.5388
+2026-04-25 15:55:59,768 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.55      0.53      0.54        70
+   pneumonia       0.32      0.20      0.25        70
+pneumothorax       0.42      0.65      0.51        68
+tuberculosis       0.97      0.97      0.97        69
+cardiomegaly       0.60      0.46      0.52        68
+    effusion       0.43      0.48      0.45        67
+
+    accuracy                           0.55       412
+   macro avg       0.55      0.55      0.54       412
+weighted avg       0.55      0.55      0.54       412
+
+2026-04-25 15:55:59,769 | INFO | Epoch time: 12.8s  |  best_val_F1=0.5599
+2026-04-25 15:55:59,770 | INFO | [early_stop] No improvement for 3/8 epochs.
+2026-04-25 15:55:59,771 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:55:59,771 | INFO | Epoch 12/50  |  LR=8.05e-05
+2026-04-25 15:56:02,838 | INFO |   [25/103] loss=1.0037
+2026-04-25 15:56:05,789 | INFO |   [50/103] loss=1.1719
+2026-04-25 15:56:08,727 | INFO |   [75/103] loss=1.2058
+2026-04-25 15:56:11,637 | INFO |   [100/103] loss=1.1036
+2026-04-25 15:56:12,021 | INFO | [TRAIN] loss=1.1613  macro_F1=0.6499
+2026-04-25 15:56:12,637 | INFO | [VAL]   loss=1.4042  macro_F1=0.5454
+2026-04-25 15:56:12,638 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.67      0.46      0.54        70
+   pneumonia       0.29      0.30      0.30        70
+pneumothorax       0.45      0.59      0.51        68
+tuberculosis       0.97      1.00      0.99        69
+cardiomegaly       0.59      0.47      0.52        68
+    effusion       0.38      0.45      0.41        67
+
+    accuracy                           0.54       412
+   macro avg       0.56      0.54      0.55       412
+weighted avg       0.56      0.54      0.55       412
+
+2026-04-25 15:56:12,638 | INFO | Epoch time: 12.9s  |  best_val_F1=0.5599
+2026-04-25 15:56:12,638 | INFO | [early_stop] No improvement for 4/8 epochs.
+2026-04-25 15:56:12,639 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:56:12,639 | INFO | Epoch 13/50  |  LR=7.86e-05
+2026-04-25 15:56:15,753 | INFO |   [25/103] loss=0.9988
+2026-04-25 15:56:18,698 | INFO |   [50/103] loss=1.1015
+2026-04-25 15:56:21,018 | INFO |   [75/103] loss=0.9587
+2026-04-25 15:56:23,982 | INFO |   [100/103] loss=0.9506
+2026-04-25 15:56:24,369 | INFO | [TRAIN] loss=1.0838  macro_F1=0.6965
+2026-04-25 15:56:24,978 | INFO | [VAL]   loss=1.4350  macro_F1=0.5488
+2026-04-25 15:56:24,978 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.50      0.44      0.47        70
+   pneumonia       0.31      0.54      0.40        70
+pneumothorax       0.57      0.51      0.54        68
+tuberculosis       0.99      0.99      0.99        69
+cardiomegaly       0.56      0.47      0.51        68
+    effusion       0.50      0.31      0.39        67
+
+    accuracy                           0.55       412
+   macro avg       0.57      0.54      0.55       412
+weighted avg       0.57      0.55      0.55       412
+
+2026-04-25 15:56:24,979 | INFO | Epoch time: 12.3s  |  best_val_F1=0.5599
+2026-04-25 15:56:24,980 | INFO | [early_stop] No improvement for 5/8 epochs.
+2026-04-25 15:56:24,980 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:56:24,980 | INFO | Epoch 14/50  |  LR=7.66e-05
+2026-04-25 15:56:28,109 | INFO |   [25/103] loss=1.0780
+2026-04-25 15:56:31,093 | INFO |   [50/103] loss=1.0629
+2026-04-25 15:56:34,030 | INFO |   [75/103] loss=0.9737
+2026-04-25 15:56:36,952 | INFO |   [100/103] loss=1.0930
+2026-04-25 15:56:37,337 | INFO | [TRAIN] loss=1.0587  macro_F1=0.7130
+2026-04-25 15:56:37,937 | INFO | [VAL]   loss=1.4121  macro_F1=0.5721
+2026-04-25 15:56:37,937 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.59      0.39      0.47        70
+   pneumonia       0.34      0.50      0.40        70
+pneumothorax       0.58      0.51      0.55        68
+tuberculosis       1.00      0.97      0.99        69
+cardiomegaly       0.53      0.66      0.59        68
+    effusion       0.52      0.39      0.44        67
+
+    accuracy                           0.57       412
+   macro avg       0.59      0.57      0.57       412
+weighted avg       0.59      0.57      0.57       412
+
+2026-04-25 15:56:38,124 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:56:38,124 | INFO | ★ New best val macro_F1 = 0.5721
+2026-04-25 15:56:38,124 | INFO | Epoch time: 13.1s  |  best_val_F1=0.5721
+2026-04-25 15:56:38,124 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:56:38,125 | INFO | Epoch 15/50  |  LR=7.45e-05
+2026-04-25 15:56:41,211 | INFO |   [25/103] loss=0.8864
+2026-04-25 15:56:44,158 | INFO |   [50/103] loss=0.9254
+2026-04-25 15:56:47,097 | INFO |   [75/103] loss=1.0794
+2026-04-25 15:56:50,067 | INFO |   [100/103] loss=0.9069
+2026-04-25 15:56:49,802 | INFO | [TRAIN] loss=1.0109  macro_F1=0.7270
+2026-04-25 15:56:50,391 | INFO | [VAL]   loss=1.3955  macro_F1=0.5820
+2026-04-25 15:56:50,391 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.53      0.57      0.55        70
+   pneumonia       0.37      0.31      0.34        70
+pneumothorax       0.55      0.57      0.56        68
+tuberculosis       0.99      0.97      0.98        69
+cardiomegaly       0.55      0.62      0.58        68
+    effusion       0.51      0.46      0.48        67
+
+    accuracy                           0.58       412
+   macro avg       0.58      0.59      0.58       412
+weighted avg       0.58      0.58      0.58       412
+
+2026-04-25 15:56:50,580 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:56:50,580 | INFO | ★ New best val macro_F1 = 0.5820
+2026-04-25 15:56:50,744 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_015.pth
+2026-04-25 15:56:50,744 | INFO | Epoch time: 12.6s  |  best_val_F1=0.5820
+2026-04-25 15:56:50,744 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:56:50,745 | INFO | Epoch 16/50  |  LR=7.23e-05
+2026-04-25 15:56:53,856 | INFO |   [25/103] loss=0.8221
+2026-04-25 15:56:56,810 | INFO |   [50/103] loss=0.8653
+2026-04-25 15:56:59,758 | INFO |   [75/103] loss=0.8765
+2026-04-25 15:57:02,715 | INFO |   [100/103] loss=1.0734
+2026-04-25 15:57:03,101 | INFO | [TRAIN] loss=0.9577  macro_F1=0.7507
+2026-04-25 15:57:03,712 | INFO | [VAL]   loss=1.4338  macro_F1=0.5587
+2026-04-25 15:57:03,712 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.48      0.70      0.57        70
+   pneumonia       0.32      0.24      0.28        70
+pneumothorax       0.60      0.51      0.56        68
+tuberculosis       0.99      0.99      0.99        69
+cardiomegaly       0.65      0.49      0.55        68
+    effusion       0.38      0.45      0.41        67
+
+    accuracy                           0.56       412
+   macro avg       0.57      0.56      0.56       412
+weighted avg       0.57      0.56      0.56       412
+
+2026-04-25 15:57:03,713 | INFO | Epoch time: 13.0s  |  best_val_F1=0.5820
+2026-04-25 15:57:03,714 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 15:57:03,714 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:57:03,714 | INFO | Epoch 17/50  |  LR=7.00e-05
+2026-04-25 15:57:06,820 | INFO |   [25/103] loss=0.9071
+2026-04-25 15:57:09,799 | INFO |   [50/103] loss=1.1086
+2026-04-25 15:57:12,784 | INFO |   [75/103] loss=0.8516
+2026-04-25 15:57:15,736 | INFO |   [100/103] loss=1.0421
+2026-04-25 15:57:16,124 | INFO | [TRAIN] loss=0.9248  macro_F1=0.7775
+2026-04-25 15:57:16,737 | INFO | [VAL]   loss=1.4841  macro_F1=0.5752
+2026-04-25 15:57:16,738 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.50      0.64      0.56        70
+   pneumonia       0.42      0.37      0.39        70
+pneumothorax       0.53      0.59      0.56        68
+tuberculosis       1.00      0.97      0.99        69
+cardiomegaly       0.71      0.44      0.55        68
+    effusion       0.39      0.43      0.41        67
+
+    accuracy                           0.58       412
+   macro avg       0.59      0.57      0.58       412
+weighted avg       0.59      0.58      0.58       412
+
+2026-04-25 15:57:16,738 | INFO | Epoch time: 13.0s  |  best_val_F1=0.5820
+2026-04-25 15:57:16,740 | INFO | [early_stop] No improvement for 2/8 epochs.
+2026-04-25 15:57:16,740 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:57:16,740 | INFO | Epoch 18/50  |  LR=6.75e-05
+2026-04-25 15:57:19,858 | INFO |   [25/103] loss=0.6661
+2026-04-25 15:57:22,184 | INFO |   [50/103] loss=0.8103
+2026-04-25 15:57:25,147 | INFO |   [75/103] loss=0.8405
+2026-04-25 15:57:28,116 | INFO |   [100/103] loss=0.7874
+2026-04-25 15:57:28,508 | INFO | [TRAIN] loss=0.8588  macro_F1=0.8145
+2026-04-25 15:57:29,112 | INFO | [VAL]   loss=1.4493  macro_F1=0.5893
+2026-04-25 15:57:29,112 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.58      0.46      0.51        70
+   pneumonia       0.43      0.43      0.43        70
+pneumothorax       0.58      0.57      0.58        68
+tuberculosis       1.00      1.00      1.00        69
+cardiomegaly       0.55      0.63      0.59        68
+    effusion       0.41      0.45      0.43        67
+
+    accuracy                           0.59       412
+   macro avg       0.59      0.59      0.59       412
+weighted avg       0.59      0.59      0.59       412
+
+2026-04-25 15:57:29,297 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:57:29,298 | INFO | ★ New best val macro_F1 = 0.5893
+2026-04-25 15:57:29,298 | INFO | Epoch time: 12.6s  |  best_val_F1=0.5893
+2026-04-25 15:57:29,298 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:57:29,298 | INFO | Epoch 19/50  |  LR=6.50e-05
+2026-04-25 15:57:32,431 | INFO |   [25/103] loss=0.7616
+2026-04-25 15:57:35,402 | INFO |   [50/103] loss=0.8826
+2026-04-25 15:57:38,387 | INFO |   [75/103] loss=0.7675
+2026-04-25 15:57:41,357 | INFO |   [100/103] loss=0.9300
+2026-04-25 15:57:41,746 | INFO | [TRAIN] loss=0.8384  macro_F1=0.8175
+2026-04-25 15:57:42,344 | INFO | [VAL]   loss=1.4519  macro_F1=0.5820
+2026-04-25 15:57:42,344 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.55      0.51      0.53        70
+   pneumonia       0.39      0.34      0.36        70
+pneumothorax       0.52      0.57      0.55        68
+tuberculosis       0.96      1.00      0.98        69
+cardiomegaly       0.63      0.62      0.62        68
+    effusion       0.44      0.46      0.45        67
+
+    accuracy                           0.58       412
+   macro avg       0.58      0.59      0.58       412
+weighted avg       0.58      0.58      0.58       412
+
+2026-04-25 15:57:42,345 | INFO | Epoch time: 13.0s  |  best_val_F1=0.5893
+2026-04-25 15:57:42,346 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 15:57:42,346 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:57:42,346 | INFO | Epoch 20/50  |  LR=6.24e-05
+2026-04-25 15:57:45,723 | INFO |   [25/103] loss=0.8936
+2026-04-25 15:57:48,690 | INFO |   [50/103] loss=0.7723
+2026-04-25 15:57:51,671 | INFO |   [75/103] loss=0.7870
+2026-04-25 15:57:54,009 | INFO |   [100/103] loss=0.9899
+2026-04-25 15:57:54,407 | INFO | [TRAIN] loss=0.7994  macro_F1=0.8423
+2026-04-25 15:57:55,004 | INFO | [VAL]   loss=1.4962  macro_F1=0.5936
+2026-04-25 15:57:55,004 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.53      0.63      0.58        70
+   pneumonia       0.38      0.34      0.36        70
+pneumothorax       0.53      0.59      0.56        68
+tuberculosis       1.00      0.99      0.99        69
+cardiomegaly       0.61      0.63      0.62        68
+    effusion       0.53      0.40      0.46        67
+
+    accuracy                           0.60       412
+   macro avg       0.60      0.60      0.59       412
+weighted avg       0.60      0.60      0.59       412
+
+2026-04-25 15:57:55,190 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:57:55,190 | INFO | ★ New best val macro_F1 = 0.5936
+2026-04-25 15:57:55,349 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_020.pth
+2026-04-25 15:57:55,350 | INFO | Epoch time: 13.0s  |  best_val_F1=0.5936
+2026-04-25 15:57:55,350 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:57:55,350 | INFO | Epoch 21/50  |  LR=5.98e-05
+2026-04-25 15:57:58,476 | INFO |   [25/103] loss=0.6363
+2026-04-25 15:58:01,474 | INFO |   [50/103] loss=0.8989
+2026-04-25 15:58:04,494 | INFO |   [75/103] loss=0.7583
+2026-04-25 15:58:07,509 | INFO |   [100/103] loss=0.7772
+2026-04-25 15:58:07,908 | INFO | [TRAIN] loss=0.7615  macro_F1=0.8638
+2026-04-25 15:58:08,517 | INFO | [VAL]   loss=1.5399  macro_F1=0.5936
+2026-04-25 15:58:08,518 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.56      0.50      0.53        70
+   pneumonia       0.43      0.46      0.44        70
+pneumothorax       0.59      0.47      0.52        68
+tuberculosis       0.99      0.99      0.99        69
+cardiomegaly       0.64      0.50      0.56        68
+    effusion       0.43      0.64      0.52        67
+
+    accuracy                           0.59       412
+   macro avg       0.61      0.59      0.59       412
+weighted avg       0.61      0.59      0.59       412
+
+2026-04-25 15:58:08,518 | INFO | Epoch time: 13.2s  |  best_val_F1=0.5936
+2026-04-25 15:58:08,520 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 15:58:08,520 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:58:08,520 | INFO | Epoch 22/50  |  LR=5.71e-05
+2026-04-25 15:58:11,663 | INFO |   [25/103] loss=0.8282
+2026-04-25 15:58:14,699 | INFO |   [50/103] loss=0.8814
+2026-04-25 15:58:17,731 | INFO |   [75/103] loss=0.8957
+2026-04-25 15:58:20,753 | INFO |   [100/103] loss=0.6659
+2026-04-25 15:58:21,157 | INFO | [TRAIN] loss=0.7235  macro_F1=0.8800
+2026-04-25 15:58:21,777 | INFO | [VAL]   loss=1.5442  macro_F1=0.5724
+2026-04-25 15:58:21,777 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.52      0.57      0.54        70
+   pneumonia       0.31      0.27      0.29        70
+pneumothorax       0.55      0.57      0.56        68
+tuberculosis       1.00      1.00      1.00        69
+cardiomegaly       0.66      0.51      0.58        68
+    effusion       0.42      0.51      0.46        67
+
+    accuracy                           0.57       412
+   macro avg       0.58      0.57      0.57       412
+weighted avg       0.58      0.57      0.57       412
+
+2026-04-25 15:58:21,778 | INFO | Epoch time: 13.3s  |  best_val_F1=0.5936
+2026-04-25 15:58:21,780 | INFO | [early_stop] No improvement for 2/8 epochs.
+2026-04-25 15:58:21,780 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:58:21,780 | INFO | Epoch 23/50  |  LR=5.43e-05
+2026-04-25 15:58:24,966 | INFO |   [25/103] loss=0.6519
+2026-04-25 15:58:27,322 | INFO |   [50/103] loss=0.6688
+2026-04-25 15:58:30,352 | INFO |   [75/103] loss=0.7600
+2026-04-25 15:58:33,352 | INFO |   [100/103] loss=0.7632
+2026-04-25 15:58:33,745 | INFO | [TRAIN] loss=0.7027  macro_F1=0.8990
+2026-04-25 15:58:34,354 | INFO | [VAL]   loss=1.5717  macro_F1=0.5859
+2026-04-25 15:58:34,354 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.56      0.63      0.59        70
+   pneumonia       0.38      0.40      0.39        70
+pneumothorax       0.55      0.53      0.54        68
+tuberculosis       1.00      1.00      1.00        69
+cardiomegaly       0.65      0.49      0.55        68
+    effusion       0.42      0.46      0.44        67
+
+    accuracy                           0.58       412
+   macro avg       0.59      0.58      0.59       412
+weighted avg       0.59      0.58      0.59       412
+
+2026-04-25 15:58:34,354 | INFO | Epoch time: 12.6s  |  best_val_F1=0.5936
+2026-04-25 15:58:34,355 | INFO | [early_stop] No improvement for 3/8 epochs.
+2026-04-25 15:58:34,356 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:58:34,356 | INFO | Epoch 24/50  |  LR=5.15e-05
+2026-04-25 15:58:37,511 | INFO |   [25/103] loss=0.6665
+2026-04-25 15:58:40,516 | INFO |   [50/103] loss=0.8228
+2026-04-25 15:58:43,527 | INFO |   [75/103] loss=0.6103
+2026-04-25 15:58:46,523 | INFO |   [100/103] loss=0.6159
+2026-04-25 15:58:46,911 | INFO | [TRAIN] loss=0.6782  macro_F1=0.9071
+2026-04-25 15:58:47,513 | INFO | [VAL]   loss=1.6347  macro_F1=0.5558
+2026-04-25 15:58:47,513 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.53      0.51      0.52        70
+   pneumonia       0.31      0.29      0.30        70
+pneumothorax       0.50      0.60      0.55        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.56      0.51      0.53        68
+    effusion       0.45      0.43      0.44        67
+
+    accuracy                           0.56       412
+   macro avg       0.56      0.56      0.56       412
+weighted avg       0.56      0.56      0.56       412
+
+2026-04-25 15:58:47,514 | INFO | Epoch time: 13.2s  |  best_val_F1=0.5936
+2026-04-25 15:58:47,515 | INFO | [early_stop] No improvement for 4/8 epochs.
+2026-04-25 15:58:47,515 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:58:47,515 | INFO | Epoch 25/50  |  LR=4.87e-05
+2026-04-25 15:58:50,674 | INFO |   [25/103] loss=0.6719
+2026-04-25 15:58:53,705 | INFO |   [50/103] loss=0.7541
+2026-04-25 15:58:56,042 | INFO |   [75/103] loss=0.6105
+2026-04-25 15:58:59,024 | INFO |   [100/103] loss=0.6887
+2026-04-25 15:58:59,416 | INFO | [TRAIN] loss=0.6653  macro_F1=0.9196
+2026-04-25 15:59:00,033 | INFO | [VAL]   loss=1.5311  macro_F1=0.5779
+2026-04-25 15:59:00,033 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.54      0.64      0.59        70
+   pneumonia       0.36      0.27      0.31        70
+pneumothorax       0.56      0.57      0.57        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.58      0.62      0.60        68
+    effusion       0.42      0.40      0.41        67
+
+    accuracy                           0.58       412
+   macro avg       0.57      0.58      0.58       412
+weighted avg       0.57      0.58      0.58       412
+
+2026-04-25 15:59:00,213 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_025.pth
+2026-04-25 15:59:00,213 | INFO | Epoch time: 12.7s  |  best_val_F1=0.5936
+2026-04-25 15:59:00,214 | INFO | [early_stop] No improvement for 5/8 epochs.
+2026-04-25 15:59:00,214 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:59:00,214 | INFO | Epoch 26/50  |  LR=4.59e-05
+2026-04-25 15:59:03,382 | INFO |   [25/103] loss=0.6862
+2026-04-25 15:59:06,440 | INFO |   [50/103] loss=0.6499
+2026-04-25 15:59:09,515 | INFO |   [75/103] loss=0.5889
+2026-04-25 15:59:12,589 | INFO |   [100/103] loss=0.6618
+2026-04-25 15:59:12,986 | INFO | [TRAIN] loss=0.6391  macro_F1=0.9363
+2026-04-25 15:59:13,603 | INFO | [VAL]   loss=1.5241  macro_F1=0.5678
+2026-04-25 15:59:13,603 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.49      0.59      0.54        70
+   pneumonia       0.33      0.30      0.32        70
+pneumothorax       0.56      0.57      0.57        68
+tuberculosis       1.00      0.99      0.99        69
+cardiomegaly       0.66      0.56      0.60        68
+    effusion       0.39      0.40      0.39        67
+
+    accuracy                           0.57       412
+   macro avg       0.57      0.57      0.57       412
+weighted avg       0.57      0.57      0.57       412
+
+2026-04-25 15:59:13,603 | INFO | Epoch time: 13.4s  |  best_val_F1=0.5936
+2026-04-25 15:59:13,604 | INFO | [early_stop] No improvement for 6/8 epochs.
+2026-04-25 15:59:13,604 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:59:13,605 | INFO | Epoch 27/50  |  LR=4.31e-05
+2026-04-25 15:59:16,830 | INFO |   [25/103] loss=0.6412
+2026-04-25 15:59:19,864 | INFO |   [50/103] loss=0.7112
+2026-04-25 15:59:22,876 | INFO |   [75/103] loss=0.5748
+2026-04-25 15:59:25,950 | INFO |   [100/103] loss=0.5574
+2026-04-25 15:59:26,351 | INFO | [TRAIN] loss=0.6244  macro_F1=0.9424
+2026-04-25 15:59:26,966 | INFO | [VAL]   loss=1.5722  macro_F1=0.5400
+2026-04-25 15:59:26,966 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.56      0.50      0.53        70
+   pneumonia       0.32      0.21      0.26        70
+pneumothorax       0.50      0.44      0.47        68
+tuberculosis       0.97      1.00      0.99        69
+cardiomegaly       0.60      0.60      0.60        68
+    effusion       0.33      0.51      0.40        67
+
+    accuracy                           0.54       412
+   macro avg       0.55      0.54      0.54       412
+weighted avg       0.55      0.54      0.54       412
+
+2026-04-25 15:59:26,967 | INFO | Epoch time: 13.4s  |  best_val_F1=0.5936
+2026-04-25 15:59:26,969 | INFO | [early_stop] No improvement for 7/8 epochs.
+2026-04-25 15:59:26,969 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:59:26,969 | INFO | Epoch 28/50  |  LR=4.03e-05
+2026-04-25 15:59:29,509 | INFO |   [25/103] loss=0.5866
+2026-04-25 15:59:32,554 | INFO |   [50/103] loss=0.5804
+2026-04-25 15:59:35,589 | INFO |   [75/103] loss=0.5507
+2026-04-25 15:59:38,646 | INFO |   [100/103] loss=0.6005
+2026-04-25 15:59:39,048 | INFO | [TRAIN] loss=0.6095  macro_F1=0.9487
+2026-04-25 15:59:39,661 | INFO | [VAL]   loss=1.5136  macro_F1=0.6009
+2026-04-25 15:59:39,661 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.58      0.60      0.59        70
+   pneumonia       0.39      0.50      0.44        70
+pneumothorax       0.59      0.51      0.55        68
+tuberculosis       1.00      0.99      0.99        69
+cardiomegaly       0.68      0.53      0.60        68
+    effusion       0.42      0.45      0.43        67
+
+    accuracy                           0.60       412
+   macro avg       0.61      0.60      0.60       412
+weighted avg       0.61      0.60      0.60       412
+
+2026-04-25 15:59:39,858 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 15:59:39,858 | INFO | ★ New best val macro_F1 = 0.6009
+2026-04-25 15:59:39,858 | INFO | Epoch time: 12.9s  |  best_val_F1=0.6009
+2026-04-25 15:59:39,858 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:59:39,858 | INFO | Epoch 29/50  |  LR=3.75e-05
+2026-04-25 15:59:43,107 | INFO |   [25/103] loss=0.6045
+2026-04-25 15:59:46,183 | INFO |   [50/103] loss=0.5843
+2026-04-25 15:59:49,264 | INFO |   [75/103] loss=0.5715
+2026-04-25 15:59:52,338 | INFO |   [100/103] loss=0.5428
+2026-04-25 15:59:52,737 | INFO | [TRAIN] loss=0.5928  macro_F1=0.9590
+2026-04-25 15:59:53,346 | INFO | [VAL]   loss=1.5332  macro_F1=0.5891
+2026-04-25 15:59:53,346 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.53      0.64      0.58        70
+   pneumonia       0.39      0.40      0.40        70
+pneumothorax       0.54      0.46      0.50        68
+tuberculosis       0.97      0.99      0.98        69
+cardiomegaly       0.68      0.59      0.63        68
+    effusion       0.44      0.46      0.45        67
+
+    accuracy                           0.59       412
+   macro avg       0.59      0.59      0.59       412
+weighted avg       0.59      0.59      0.59       412
+
+2026-04-25 15:59:53,347 | INFO | Epoch time: 13.5s  |  best_val_F1=0.6009
+2026-04-25 15:59:53,347 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 15:59:53,349 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 15:59:53,349 | INFO | Epoch 30/50  |  LR=3.47e-05
+2026-04-25 15:59:56,613 | INFO |   [25/103] loss=0.5947
+2026-04-25 15:59:59,711 | INFO |   [50/103] loss=0.5682
+2026-04-25 16:00:02,154 | INFO |   [75/103] loss=0.6202
+2026-04-25 16:00:05,188 | INFO |   [100/103] loss=0.6651
+2026-04-25 16:00:05,585 | INFO | [TRAIN] loss=0.5909  macro_F1=0.9578
+2026-04-25 16:00:06,184 | INFO | [VAL]   loss=1.5640  macro_F1=0.5792
+2026-04-25 16:00:06,184 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.49      0.67      0.57        70
+   pneumonia       0.38      0.34      0.36        70
+pneumothorax       0.53      0.49      0.51        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.65      0.57      0.61        68
+    effusion       0.46      0.42      0.44        67
+
+    accuracy                           0.58       412
+   macro avg       0.58      0.58      0.58       412
+weighted avg       0.58      0.58      0.58       412
+
+2026-04-25 16:00:06,363 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_030.pth
+2026-04-25 16:00:06,363 | INFO | Epoch time: 13.0s  |  best_val_F1=0.6009
+2026-04-25 16:00:06,363 | INFO | [early_stop] No improvement for 2/8 epochs.
+2026-04-25 16:00:06,363 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:00:06,363 | INFO | Epoch 31/50  |  LR=3.20e-05
+2026-04-25 16:00:09,611 | INFO |   [25/103] loss=0.5494
+2026-04-25 16:00:12,683 | INFO |   [50/103] loss=0.5575
+2026-04-25 16:00:15,780 | INFO |   [75/103] loss=0.5313
+2026-04-25 16:00:18,867 | INFO |   [100/103] loss=0.5414
+2026-04-25 16:00:19,268 | INFO | [TRAIN] loss=0.5780  macro_F1=0.9657
+2026-04-25 16:00:19,901 | INFO | [VAL]   loss=1.5418  macro_F1=0.5780
+2026-04-25 16:00:19,901 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.54      0.63      0.58        70
+   pneumonia       0.36      0.31      0.34        70
+pneumothorax       0.52      0.47      0.49        68
+tuberculosis       0.97      1.00      0.99        69
+cardiomegaly       0.68      0.59      0.63        68
+    effusion       0.41      0.48      0.44        67
+
+    accuracy                           0.58       412
+   macro avg       0.58      0.58      0.58       412
+weighted avg       0.58      0.58      0.58       412
+
+2026-04-25 16:00:19,902 | INFO | Epoch time: 13.5s  |  best_val_F1=0.6009
+2026-04-25 16:00:19,903 | INFO | [early_stop] No improvement for 3/8 epochs.
+2026-04-25 16:00:19,903 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:00:19,903 | INFO | Epoch 32/50  |  LR=2.94e-05
+2026-04-25 16:00:23,184 | INFO |   [25/103] loss=0.6116
+2026-04-25 16:00:26,274 | INFO |   [50/103] loss=0.5434
+2026-04-25 16:00:29,358 | INFO |   [75/103] loss=0.5509
+2026-04-25 16:00:31,792 | INFO |   [100/103] loss=0.6795
+2026-04-25 16:00:32,193 | INFO | [TRAIN] loss=0.5680  macro_F1=0.9739
+2026-04-25 16:00:32,832 | INFO | [VAL]   loss=1.5051  macro_F1=0.5782
+2026-04-25 16:00:32,832 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.54      0.54      0.54        70
+   pneumonia       0.39      0.33      0.36        70
+pneumothorax       0.52      0.49      0.50        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.62      0.62      0.62        68
+    effusion       0.42      0.51      0.46        67
+
+    accuracy                           0.58       412
+   macro avg       0.58      0.58      0.58       412
+weighted avg       0.58      0.58      0.58       412
+
+2026-04-25 16:00:32,833 | INFO | Epoch time: 12.9s  |  best_val_F1=0.6009
+2026-04-25 16:00:32,834 | INFO | [early_stop] No improvement for 4/8 epochs.
+2026-04-25 16:00:32,834 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:00:32,834 | INFO | Epoch 33/50  |  LR=2.68e-05
+2026-04-25 16:00:36,049 | INFO |   [25/103] loss=0.5344
+2026-04-25 16:00:39,104 | INFO |   [50/103] loss=0.5845
+2026-04-25 16:00:42,169 | INFO |   [75/103] loss=0.5111
+2026-04-25 16:00:45,235 | INFO |   [100/103] loss=0.5373
+2026-04-25 16:00:45,630 | INFO | [TRAIN] loss=0.5632  macro_F1=0.9752
+2026-04-25 16:00:46,253 | INFO | [VAL]   loss=1.4939  macro_F1=0.5881
+2026-04-25 16:00:46,253 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.57      0.61      0.59        70
+   pneumonia       0.39      0.36      0.37        70
+pneumothorax       0.51      0.51      0.51        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.64      0.60      0.62        68
+    effusion       0.43      0.45      0.44        67
+
+    accuracy                           0.59       412
+   macro avg       0.59      0.59      0.59       412
+weighted avg       0.59      0.59      0.59       412
+
+2026-04-25 16:00:46,254 | INFO | Epoch time: 13.4s  |  best_val_F1=0.6009
+2026-04-25 16:00:46,255 | INFO | [early_stop] No improvement for 5/8 epochs.
+2026-04-25 16:00:46,255 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:00:46,255 | INFO | Epoch 34/50  |  LR=2.43e-05
+2026-04-25 16:00:49,476 | INFO |   [25/103] loss=0.5688
+2026-04-25 16:00:52,564 | INFO |   [50/103] loss=0.5473
+2026-04-25 16:00:55,614 | INFO |   [75/103] loss=0.5610
+2026-04-25 16:00:58,681 | INFO |   [100/103] loss=0.5558
+2026-04-25 16:00:59,071 | INFO | [TRAIN] loss=0.5626  macro_F1=0.9727
+2026-04-25 16:00:59,677 | INFO | [VAL]   loss=1.5421  macro_F1=0.5733
+2026-04-25 16:00:59,678 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.51      0.53      0.52        70
+   pneumonia       0.35      0.31      0.33        70
+pneumothorax       0.51      0.51      0.51        68
+tuberculosis       0.97      1.00      0.99        69
+cardiomegaly       0.65      0.62      0.63        68
+    effusion       0.44      0.48      0.46        67
+
+    accuracy                           0.58       412
+   macro avg       0.57      0.58      0.57       412
+weighted avg       0.57      0.58      0.57       412
+
+2026-04-25 16:00:59,678 | INFO | Epoch time: 13.4s  |  best_val_F1=0.6009
+2026-04-25 16:00:59,680 | INFO | [early_stop] No improvement for 6/8 epochs.
+2026-04-25 16:00:59,680 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:00:59,680 | INFO | Epoch 35/50  |  LR=2.18e-05
+2026-04-25 16:01:02,877 | INFO |   [25/103] loss=0.5524
+2026-04-25 16:01:05,250 | INFO |   [50/103] loss=0.5239
+2026-04-25 16:01:08,295 | INFO |   [75/103] loss=0.5121
+2026-04-25 16:01:11,359 | INFO |   [100/103] loss=0.5126
+2026-04-25 16:01:11,756 | INFO | [TRAIN] loss=0.5516  macro_F1=0.9793
+2026-04-25 16:01:12,394 | INFO | [VAL]   loss=1.5195  macro_F1=0.5685
+2026-04-25 16:01:12,394 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.53      0.57      0.55        70
+   pneumonia       0.37      0.31      0.34        70
+pneumothorax       0.52      0.53      0.53        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.60      0.56      0.58        68
+    effusion       0.40      0.45      0.42        67
+
+    accuracy                           0.57       412
+   macro avg       0.57      0.57      0.57       412
+weighted avg       0.57      0.57      0.57       412
+
+2026-04-25 16:01:12,565 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_035.pth
+2026-04-25 16:01:12,565 | INFO | Epoch time: 12.9s  |  best_val_F1=0.6009
+2026-04-25 16:01:12,565 | INFO | [early_stop] No improvement for 7/8 epochs.
+2026-04-25 16:01:12,565 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:01:12,565 | INFO | Epoch 36/50  |  LR=1.95e-05
+2026-04-25 16:01:15,731 | INFO |   [25/103] loss=0.5622
+2026-04-25 16:01:18,741 | INFO |   [50/103] loss=0.5483
+2026-04-25 16:01:21,830 | INFO |   [75/103] loss=0.6413
+2026-04-25 16:01:24,890 | INFO |   [100/103] loss=0.5624
+2026-04-25 16:01:25,289 | INFO | [TRAIN] loss=0.5509  macro_F1=0.9800
+2026-04-25 16:01:25,896 | INFO | [VAL]   loss=1.4895  macro_F1=0.6010
+2026-04-25 16:01:25,897 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.55      0.60      0.58        70
+   pneumonia       0.40      0.43      0.41        70
+pneumothorax       0.54      0.50      0.52        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.70      0.56      0.62        68
+    effusion       0.46      0.51      0.48        67
+
+    accuracy                           0.60       412
+   macro avg       0.61      0.60      0.60       412
+weighted avg       0.61      0.60      0.60       412
+
+2026-04-25 16:01:26,091 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 16:01:26,091 | INFO | ★ New best val macro_F1 = 0.6010
+2026-04-25 16:01:26,092 | INFO | Epoch time: 13.5s  |  best_val_F1=0.6010
+2026-04-25 16:01:26,092 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:01:26,092 | INFO | Epoch 37/50  |  LR=1.73e-05
+2026-04-25 16:01:29,300 | INFO |   [25/103] loss=0.5432
+2026-04-25 16:01:32,581 | INFO |   [50/103] loss=0.5612
+2026-04-25 16:01:34,937 | INFO |   [75/103] loss=0.5556
+2026-04-25 16:01:37,973 | INFO |   [100/103] loss=0.5509
+2026-04-25 16:01:38,376 | INFO | [TRAIN] loss=0.5418  macro_F1=0.9861
+2026-04-25 16:01:38,970 | INFO | [VAL]   loss=1.4879  macro_F1=0.5753
+2026-04-25 16:01:38,970 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.57      0.56      0.57        70
+   pneumonia       0.37      0.36      0.36        70
+pneumothorax       0.52      0.50      0.51        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.62      0.59      0.60        68
+    effusion       0.40      0.45      0.42        67
+
+    accuracy                           0.58       412
+   macro avg       0.58      0.58      0.58       412
+weighted avg       0.58      0.58      0.58       412
+
+2026-04-25 16:01:38,971 | INFO | Epoch time: 12.9s  |  best_val_F1=0.6010
+2026-04-25 16:01:38,972 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 16:01:38,973 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:01:38,973 | INFO | Epoch 38/50  |  LR=1.52e-05
+2026-04-25 16:01:42,192 | INFO |   [25/103] loss=0.5271
+2026-04-25 16:01:45,243 | INFO |   [50/103] loss=0.5395
+2026-04-25 16:01:48,315 | INFO |   [75/103] loss=0.5194
+2026-04-25 16:01:51,325 | INFO |   [100/103] loss=0.5680
+2026-04-25 16:01:51,725 | INFO | [TRAIN] loss=0.5355  macro_F1=0.9864
+2026-04-25 16:01:52,325 | INFO | [VAL]   loss=1.4643  macro_F1=0.5836
+2026-04-25 16:01:52,326 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.57      0.61      0.59        70
+   pneumonia       0.38      0.37      0.38        70
+pneumothorax       0.50      0.50      0.50        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.61      0.57      0.59        68
+    effusion       0.45      0.45      0.45        67
+
+    accuracy                           0.58       412
+   macro avg       0.58      0.58      0.58       412
+weighted avg       0.58      0.58      0.58       412
+
+2026-04-25 16:01:52,326 | INFO | Epoch time: 13.4s  |  best_val_F1=0.6010
+2026-04-25 16:01:52,328 | INFO | [early_stop] No improvement for 2/8 epochs.
+2026-04-25 16:01:52,328 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:01:52,328 | INFO | Epoch 39/50  |  LR=1.32e-05
+2026-04-25 16:01:55,583 | INFO |   [25/103] loss=0.5104
+2026-04-25 16:01:58,652 | INFO |   [50/103] loss=0.5424
+2026-04-25 16:02:01,705 | INFO |   [75/103] loss=0.5490
+2026-04-25 16:02:04,766 | INFO |   [100/103] loss=0.5804
+2026-04-25 16:02:05,163 | INFO | [TRAIN] loss=0.5397  macro_F1=0.9821
+2026-04-25 16:02:05,791 | INFO | [VAL]   loss=1.4641  macro_F1=0.5939
+2026-04-25 16:02:05,791 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.59      0.61      0.60        70
+   pneumonia       0.38      0.37      0.38        70
+pneumothorax       0.52      0.51      0.52        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.72      0.56      0.63        68
+    effusion       0.41      0.49      0.45        67
+
+    accuracy                           0.59       412
+   macro avg       0.60      0.59      0.59       412
+weighted avg       0.60      0.59      0.59       412
+
+2026-04-25 16:02:05,792 | INFO | Epoch time: 13.5s  |  best_val_F1=0.6010
+2026-04-25 16:02:05,793 | INFO | [early_stop] No improvement for 3/8 epochs.
+2026-04-25 16:02:05,793 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:02:05,793 | INFO | Epoch 40/50  |  LR=1.13e-05
+2026-04-25 16:02:08,367 | INFO |   [25/103] loss=0.5690
+2026-04-25 16:02:11,432 | INFO |   [50/103] loss=0.5738
+2026-04-25 16:02:14,490 | INFO |   [75/103] loss=0.5307
+2026-04-25 16:02:17,555 | INFO |   [100/103] loss=0.5028
+2026-04-25 16:02:17,957 | INFO | [TRAIN] loss=0.5315  macro_F1=0.9860
+2026-04-25 16:02:18,613 | INFO | [VAL]   loss=1.4422  macro_F1=0.6034
+2026-04-25 16:02:18,613 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.59      0.61      0.60        70
+   pneumonia       0.42      0.40      0.41        70
+pneumothorax       0.54      0.51      0.53        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.63      0.60      0.62        68
+    effusion       0.45      0.49      0.47        67
+
+    accuracy                           0.60       412
+   macro avg       0.60      0.60      0.60       412
+weighted avg       0.60      0.60      0.60       412
+
+2026-04-25 16:02:18,810 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 16:02:18,810 | INFO | ★ New best val macro_F1 = 0.6034
+2026-04-25 16:02:18,975 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_040.pth
+2026-04-25 16:02:18,975 | INFO | Epoch time: 13.2s  |  best_val_F1=0.6034
+2026-04-25 16:02:18,975 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:02:18,975 | INFO | Epoch 41/50  |  LR=9.57e-06
+2026-04-25 16:02:22,187 | INFO |   [25/103] loss=0.5298
+2026-04-25 16:02:25,255 | INFO |   [50/103] loss=0.5288
+2026-04-25 16:02:28,342 | INFO |   [75/103] loss=0.5345
+2026-04-25 16:02:31,414 | INFO |   [100/103] loss=0.5063
+2026-04-25 16:02:31,813 | INFO | [TRAIN] loss=0.5284  macro_F1=0.9879
+2026-04-25 16:02:32,417 | INFO | [VAL]   loss=1.4677  macro_F1=0.5753
+2026-04-25 16:02:32,417 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.55      0.59      0.57        70
+   pneumonia       0.42      0.31      0.36        70
+pneumothorax       0.50      0.50      0.50        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.59      0.65      0.62        68
+    effusion       0.41      0.43      0.42        67
+
+    accuracy                           0.58       412
+   macro avg       0.57      0.58      0.58       412
+weighted avg       0.57      0.58      0.58       412
+
+2026-04-25 16:02:32,418 | INFO | Epoch time: 13.4s  |  best_val_F1=0.6034
+2026-04-25 16:02:32,419 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 16:02:32,419 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:02:32,419 | INFO | Epoch 42/50  |  LR=7.99e-06
+2026-04-25 16:02:35,635 | INFO |   [25/103] loss=0.4885
+2026-04-25 16:02:38,045 | INFO |   [50/103] loss=0.5142
+2026-04-25 16:02:41,119 | INFO |   [75/103] loss=0.5047
+2026-04-25 16:02:44,183 | INFO |   [100/103] loss=0.5523
+2026-04-25 16:02:44,578 | INFO | [TRAIN] loss=0.5305  macro_F1=0.9845
+2026-04-25 16:02:45,218 | INFO | [VAL]   loss=1.4653  macro_F1=0.5968
+2026-04-25 16:02:45,219 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.58      0.57      0.58        70
+   pneumonia       0.37      0.44      0.41        70
+pneumothorax       0.56      0.51      0.53        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.67      0.59      0.62        68
+    effusion       0.45      0.45      0.45        67
+
+    accuracy                           0.59       412
+   macro avg       0.60      0.59      0.60       412
+weighted avg       0.60      0.59      0.60       412
+
+2026-04-25 16:02:45,219 | INFO | Epoch time: 12.8s  |  best_val_F1=0.6034
+2026-04-25 16:02:45,220 | INFO | [early_stop] No improvement for 2/8 epochs.
+2026-04-25 16:02:45,221 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:02:45,221 | INFO | Epoch 43/50  |  LR=6.55e-06
+2026-04-25 16:02:48,455 | INFO |   [25/103] loss=0.5461
+2026-04-25 16:02:51,516 | INFO |   [50/103] loss=0.5188
+2026-04-25 16:02:54,583 | INFO |   [75/103] loss=0.5890
+2026-04-25 16:02:57,638 | INFO |   [100/103] loss=0.4842
+2026-04-25 16:02:58,037 | INFO | [TRAIN] loss=0.5216  macro_F1=0.9921
+2026-04-25 16:02:58,672 | INFO | [VAL]   loss=1.4417  macro_F1=0.5998
+2026-04-25 16:02:58,672 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.59      0.59      0.59        70
+   pneumonia       0.42      0.40      0.41        70
+pneumothorax       0.54      0.51      0.53        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.66      0.62      0.64        68
+    effusion       0.41      0.48      0.44        67
+
+    accuracy                           0.60       412
+   macro avg       0.60      0.60      0.60       412
+weighted avg       0.60      0.60      0.60       412
+
+2026-04-25 16:02:58,672 | INFO | Epoch time: 13.5s  |  best_val_F1=0.6034
+2026-04-25 16:02:58,674 | INFO | [early_stop] No improvement for 3/8 epochs.
+2026-04-25 16:02:58,674 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:02:58,674 | INFO | Epoch 44/50  |  LR=5.27e-06
+2026-04-25 16:03:01,889 | INFO |   [25/103] loss=0.5114
+2026-04-25 16:03:04,957 | INFO |   [50/103] loss=0.5165
+2026-04-25 16:03:08,015 | INFO |   [75/103] loss=0.5232
+2026-04-25 16:03:10,428 | INFO |   [100/103] loss=0.5466
+2026-04-25 16:03:10,828 | INFO | [TRAIN] loss=0.5238  macro_F1=0.9903
+2026-04-25 16:03:11,440 | INFO | [VAL]   loss=1.4503  macro_F1=0.5988
+2026-04-25 16:03:11,440 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.59      0.61      0.60        70
+   pneumonia       0.40      0.39      0.39        70
+pneumothorax       0.53      0.54      0.54        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.65      0.59      0.62        68
+    effusion       0.44      0.46      0.45        67
+
+    accuracy                           0.60       412
+   macro avg       0.60      0.60      0.60       412
+weighted avg       0.60      0.60      0.60       412
+
+2026-04-25 16:03:11,441 | INFO | Epoch time: 12.8s  |  best_val_F1=0.6034
+2026-04-25 16:03:11,442 | INFO | [early_stop] No improvement for 4/8 epochs.
+2026-04-25 16:03:11,442 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:03:11,442 | INFO | Epoch 45/50  |  LR=4.15e-06
+2026-04-25 16:03:14,673 | INFO |   [25/103] loss=0.5060
+2026-04-25 16:03:17,740 | INFO |   [50/103] loss=0.5121
+2026-04-25 16:03:20,817 | INFO |   [75/103] loss=0.5573
+2026-04-25 16:03:23,891 | INFO |   [100/103] loss=0.5178
+2026-04-25 16:03:24,293 | INFO | [TRAIN] loss=0.5236  macro_F1=0.9909
+2026-04-25 16:03:24,966 | INFO | [VAL]   loss=1.4476  macro_F1=0.6005
+2026-04-25 16:03:24,966 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.58      0.61      0.60        70
+   pneumonia       0.41      0.41      0.41        70
+pneumothorax       0.55      0.51      0.53        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.68      0.57      0.62        68
+    effusion       0.42      0.48      0.44        67
+
+    accuracy                           0.60       412
+   macro avg       0.60      0.60      0.60       412
+weighted avg       0.60      0.60      0.60       412
+
+2026-04-25 16:03:25,154 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_045.pth
+2026-04-25 16:03:25,154 | INFO | Epoch time: 13.7s  |  best_val_F1=0.6034
+2026-04-25 16:03:25,154 | INFO | [early_stop] No improvement for 5/8 epochs.
+2026-04-25 16:03:25,154 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:03:25,154 | INFO | Epoch 46/50  |  LR=3.20e-06
+2026-04-25 16:03:28,455 | INFO |   [25/103] loss=0.5153
+2026-04-25 16:03:31,588 | INFO |   [50/103] loss=0.5316
+2026-04-25 16:03:34,730 | INFO |   [75/103] loss=0.5158
+2026-04-25 16:03:37,930 | INFO |   [100/103] loss=0.5159
+2026-04-25 16:03:38,325 | INFO | [TRAIN] loss=0.5170  macro_F1=0.9930
+2026-04-25 16:03:38,972 | INFO | [VAL]   loss=1.4467  macro_F1=0.6075
+2026-04-25 16:03:38,972 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.60      0.60      0.60        70
+   pneumonia       0.40      0.43      0.41        70
+pneumothorax       0.54      0.56      0.55        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.68      0.60      0.64        68
+    effusion       0.45      0.45      0.45        67
+
+    accuracy                           0.61       412
+   macro avg       0.61      0.61      0.61       412
+weighted avg       0.61      0.61      0.61       412
+
+2026-04-25 16:03:39,176 | INFO | [ckpt] Saved → checkpoints/best_model.pth
+2026-04-25 16:03:39,176 | INFO | ★ New best val macro_F1 = 0.6075
+2026-04-25 16:03:39,177 | INFO | Epoch time: 14.0s  |  best_val_F1=0.6075
+2026-04-25 16:03:39,177 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:03:39,177 | INFO | Epoch 47/50  |  LR=2.41e-06
+2026-04-25 16:03:41,730 | INFO |   [25/103] loss=0.5150
+2026-04-25 16:03:44,819 | INFO |   [50/103] loss=0.6072
+2026-04-25 16:03:47,905 | INFO |   [75/103] loss=0.5013
+2026-04-25 16:03:50,979 | INFO |   [100/103] loss=0.5113
+2026-04-25 16:03:51,380 | INFO | [TRAIN] loss=0.5220  macro_F1=0.9879
+2026-04-25 16:03:51,976 | INFO | [VAL]   loss=1.4594  macro_F1=0.6005
+2026-04-25 16:03:51,976 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.58      0.61      0.60        70
+   pneumonia       0.40      0.41      0.41        70
+pneumothorax       0.54      0.50      0.52        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.69      0.59      0.63        68
+    effusion       0.43      0.48      0.45        67
+
+    accuracy                           0.60       412
+   macro avg       0.60      0.60      0.60       412
+weighted avg       0.60      0.60      0.60       412
+
+2026-04-25 16:03:51,977 | INFO | Epoch time: 12.8s  |  best_val_F1=0.6075
+2026-04-25 16:03:51,979 | INFO | [early_stop] No improvement for 1/8 epochs.
+2026-04-25 16:03:51,979 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:03:51,979 | INFO | Epoch 48/50  |  LR=1.80e-06
+2026-04-25 16:03:55,215 | INFO |   [25/103] loss=0.5045
+2026-04-25 16:03:58,298 | INFO |   [50/103] loss=0.5448
+2026-04-25 16:04:01,385 | INFO |   [75/103] loss=0.5101
+2026-04-25 16:04:04,477 | INFO |   [100/103] loss=0.5081
+2026-04-25 16:04:04,883 | INFO | [TRAIN] loss=0.5201  macro_F1=0.9915
+2026-04-25 16:04:05,493 | INFO | [VAL]   loss=1.4510  macro_F1=0.5976
+2026-04-25 16:04:05,493 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.58      0.61      0.60        70
+   pneumonia       0.40      0.41      0.41        70
+pneumothorax       0.57      0.49      0.52        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.65      0.59      0.62        68
+    effusion       0.43      0.48      0.45        67
+
+    accuracy                           0.60       412
+   macro avg       0.60      0.60      0.60       412
+weighted avg       0.60      0.60      0.60       412
+
+2026-04-25 16:04:05,494 | INFO | Epoch time: 13.5s  |  best_val_F1=0.6075
+2026-04-25 16:04:05,495 | INFO | [early_stop] No improvement for 2/8 epochs.
+2026-04-25 16:04:05,495 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:04:05,495 | INFO | Epoch 49/50  |  LR=1.35e-06
+2026-04-25 16:04:08,764 | INFO |   [25/103] loss=0.5000
+2026-04-25 16:04:11,823 | INFO |   [50/103] loss=0.5504
+2026-04-25 16:04:14,255 | INFO |   [75/103] loss=0.5028
+2026-04-25 16:04:17,349 | INFO |   [100/103] loss=0.5055
+2026-04-25 16:04:17,757 | INFO | [TRAIN] loss=0.5209  macro_F1=0.9918
+2026-04-25 16:04:18,384 | INFO | [VAL]   loss=1.4466  macro_F1=0.6041
+2026-04-25 16:04:18,384 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.60      0.61      0.61        70
+   pneumonia       0.41      0.39      0.40        70
+pneumothorax       0.54      0.53      0.53        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.66      0.60      0.63        68
+    effusion       0.44      0.49      0.46        67
+
+    accuracy                           0.60       412
+   macro avg       0.61      0.60      0.60       412
+weighted avg       0.61      0.60      0.60       412
+
+2026-04-25 16:04:18,385 | INFO | Epoch time: 12.9s  |  best_val_F1=0.6075
+2026-04-25 16:04:18,386 | INFO | [early_stop] No improvement for 3/8 epochs.
+2026-04-25 16:04:18,387 | INFO | 
+────────────────────────────────────────────────────────────
+2026-04-25 16:04:18,387 | INFO | Epoch 50/50  |  LR=1.09e-06
+2026-04-25 16:04:21,628 | INFO |   [25/103] loss=0.5608
+2026-04-25 16:04:24,702 | INFO |   [50/103] loss=0.5384
+2026-04-25 16:04:27,814 | INFO |   [75/103] loss=0.4921
+2026-04-25 16:04:30,897 | INFO |   [100/103] loss=0.4971
+2026-04-25 16:04:31,295 | INFO | [TRAIN] loss=0.5196  macro_F1=0.9930
+2026-04-25 16:04:31,921 | INFO | [VAL]   loss=1.4498  macro_F1=0.6026
+2026-04-25 16:04:31,921 | INFO | 
+              precision    recall  f1-score   support
+
+      normal       0.58      0.63      0.60        70
+   pneumonia       0.41      0.43      0.42        70
+pneumothorax       0.54      0.50      0.52        68
+tuberculosis       0.99      1.00      0.99        69
+cardiomegaly       0.68      0.57      0.62        68
+    effusion       0.44      0.48      0.46        67
+
+    accuracy                           0.60       412
+   macro avg       0.61      0.60      0.60       412
+weighted avg       0.61      0.60      0.60       412
+
+2026-04-25 16:04:32,098 | INFO | [ckpt] Saved → checkpoints/ckpt_epoch_050.pth
+2026-04-25 16:04:32,098 | INFO | Epoch time: 13.7s  |  best_val_F1=0.6075
+2026-04-25 16:04:32,098 | INFO | [early_stop] No improvement for 4/8 epochs.
+2026-04-25 16:04:32,274 | INFO | [ckpt] Saved → checkpoints/last_model.pth
+2026-04-25 16:04:32,276 | INFO | 
+======================================================================
+2026-04-25 16:04:32,276 | INFO | Training complete. Best Val Macro F1 = 0.6075
+2026-04-25 16:04:32,276 | INFO | Best model saved to: checkpoints/best_model.pth
+2026-04-25 16:04:32,276 | INFO | ======================================================================

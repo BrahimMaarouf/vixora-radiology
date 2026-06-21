@@ -1,0 +1,13 @@
+# ChestX AI — web_ui requirements
+# Tested with Python 3.10 / 3.11 on Windows.
+
+streamlit>=1.32,<2.0
+Pillow>=10.0
+numpy>=1.26,<3.0
+opencv-python>=4.9
+
+# PyTorch — pin to a stable pair. If you trained on a different version,
+# match it here to avoid state_dict load surprises (resnet50 layer names
+# have been stable for years but optimizer/scheduler state can drift).
+torch>=2.2
+torchvision>=0.17

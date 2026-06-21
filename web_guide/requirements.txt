@@ -1,0 +1,9 @@
+streamlit>=1.32
+Pillow>=10.0
+# Optional, for real medical workflow:
+# pydicom>=2.4            # DICOM decoding
+# numpy>=1.26
+# torch>=2.2              # or tensorflow, depending on your model
+# torchvision>=0.17
+# opencv-python>=4.9      # Grad-CAM rendering
+# reportlab>=4.0          # PDF report generation

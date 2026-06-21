@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>ChestX AI · Clinical Workspace</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  /* ---------- Design tokens ---------- */
+  :root {
+    /* Brand & status */
+    --blue-950: #061a33;
+    --blue-900: #0a2540;
+    --blue-800: #0b3b76;
+    --blue-700: #0b5394;
+    --blue-600: #1565c0;
+    --blue-500: #2576d1;
+    --blue-100: #d6e6f7;
+    --blue-50:  #eef4fb;
+
+    --teal-600: #0f7e8a;
+
+    --green-700: #0a7a44;
+    --green-600: #0f9d58;
+    --green-500: #22c55e;
+    --green-50:  #e6f4ea;
+
+    --amber-600: #b45309;
+    --amber-500: #f59e0b;
+    --amber-50:  #fef5e7;
+
+    --red-700: #b91c1c;
+    --red-600: #dc2626;
+    --red-50:  #fef2f2;
+
+    /* Ink & surface */
+    --ink-900: #0f1729;
+    --ink-800: #1e293b;
+    --ink-700: #334155;
+    --ink-600: #475569;
+    --ink-500: #64748b;
+    --ink-400: #94a3b8;
+    --ink-300: #cbd5e1;
+    --ink-200: #e2e8f0;
+    --ink-100: #eef2f7;
+    --ink-50:  #f6f8fb;
+
+    --surface: #ffffff;
+    --bg: #f4f7fb;
+
+    /* Shape & motion */
+    --r-sm: 4px;
+    --r-md: 8px;
+    --r-lg: 12px;
+    --r-xl: 16px;
+
+    --shadow-1: 0 1px 0 rgba(15, 23, 41, 0.04), 0 1px 2px rgba(15, 23, 41, 0.04);
+    --shadow-2: 0 1px 2px rgba(15, 23, 41, 0.06), 0 4px 12px rgba(15, 23, 41, 0.06);
+    --shadow-3: 0 8px 24px rgba(15, 23, 41, 0.08);
+
+    --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--font-sans);
+    color: var(--ink-800);
+    background: var(--bg);
+    font-size: 13px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  button { font-family: inherit; cursor: pointer; }
+  input, select, textarea { font-family: inherit; }
+
+  /* ============================================================
+     TOP NAV
+     ============================================================ */
+  .app {
+    min-height: 100vh;
+    display: grid;
+    grid-template-rows: 56px 52px 1fr 36px;
+  }
+
+  .topbar {
+    background: var(--blue-950);
+    color: #fff;
+    display: flex;
+    align-items: stretch;
+    padding: 0 20px;
+    border-bottom: 1px solid #000;
+  }
+  .topbar .brand {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-right: 28px;
+    border-right: 1px solid rgba(255,255,255,0.08);
+  }
+  .brand-mark {
+    width: 30px; height: 30px;
+    border-radius: 7px;
+    background: linear-gradient(135deg, #2576d1 0%, #0b5394 100%);
+    display: grid;
+    place-items: center;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.18), 0 0 0 1px rgba(0,0,0,0.3);
+  }
+  .brand-mark svg { display: block; }
+  .brand-name {
+    font-weight: 700;
+    font-size: 15px;
+    letter-spacing: 0.2px;
+    line-height: 1;
+  }
+  .brand-tag {
+    font-size: 10px;
+    color: #93b6dc;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 3px;
+    font-family: var(--font-mono);
+  }
+
+  .nav {
+    display: flex;
+    align-items: stretch;
+    margin-left: 4px;
+  }
+  .nav a {
+    display: flex; align-items: center;
+    padding: 0 16px;
+    color: #c8d6e6;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    position: relative;
+    border-bottom: 2px solid transparent;
+  }
+  .nav a.active {
+    color: #fff;
+    border-bottom-color: var(--blue-500);
+  }
+  .nav a:hover:not(.active) { color: #fff; }
+  .nav a .badge {
+    background: var(--blue-600);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    padding: 2px 6px;
+    border-radius: 10px;
+    margin-left: 6px;
+    font-family: var(--font-mono);
+  }
+
+  .top-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+  .env-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(15, 157, 88, 0.14);
+    color: #6be39e;
+    border: 1px solid rgba(15, 157, 88, 0.4);
+    padding: 4px 9px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-family: var(--font-mono);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .env-chip .dot {
+    width: 6px; height: 6px;
+    background: var(--green-500);
+    border-radius: 50%;
+    box-shadow: 0 0 6px var(--green-500);
+  }
+  .icon-btn {
+    width: 32px; height: 32px;
+    display: grid; place-items: center;
+    border-radius: 8px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.08);
+    color: #c8d6e6;
+  }
+  .icon-btn:hover { background: rgba(255,255,255,0.06); color: #fff; }
+  .avatar {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #2576d1, #0f7e8a);
+    color: #fff;
+    display: grid; place-items: center;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1px solid rgba(255,255,255,0.2);
+  }
+  .user-block {
+    display: flex; align-items: center; gap: 10px;
+    padding-left: 12px;
+    border-left: 1px solid rgba(255,255,255,0.08);
+    color: #c8d6e6;
+  }
+  .user-block .name { font-size: 12px; font-weight: 600; color: #fff; line-height: 1.1; }
+  .user-block .role { font-size: 10px; color: #93b6dc; font-family: var(--font-mono); letter-spacing: 0.08em; }
+
+  /* ============================================================
+     PATIENT BANNER
+     ============================================================ */
+  .patient-banner {
+    background: var(--surface);
+    border-bottom: 1px solid var(--ink-200);
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 28px;
+    box-shadow: 0 1px 0 rgba(15, 23, 41, 0.02);
+  }
+  .patient-banner .pb-id {
+    display: flex; align-items: center; gap: 12px;
+  }
+  .pb-avatar {
+    width: 36px; height: 36px;
+    border-radius: 8px;
+    background: var(--blue-50);
+    color: var(--blue-700);
+    display: grid; place-items: center;
+    font-weight: 600;
+    font-size: 13px;
+    border: 1px solid var(--blue-100);
+  }
+  .pb-name {
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--ink-900);
+    line-height: 1.1;
+  }
+  .pb-sub {
+    display: flex; gap: 12px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-500);
+    margin-top: 3px;
+  }
+  .pb-sub .sep { color: var(--ink-300); }
+
+  .pb-meta {
+    display: flex; gap: 28px;
+    margin-left: 8px;
+  }
+  .pb-meta-item .k {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--ink-500);
+    margin-bottom: 2px;
+  }
+  .pb-meta-item .v {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--ink-800);
+  }
+
+  .pb-actions {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 8px;
+  }
+
+  /* ============================================================
+     WORKSPACE GRID
+     ============================================================ */
+  .workspace {
+    display: grid;
+    grid-template-columns: 320px 1fr 400px;
+    min-height: 0;
+    background: var(--bg);
+  }
+
+  /* ---------- Generic panel ---------- */
+  .panel {
+    background: var(--surface);
+    border: 1px solid var(--ink-200);
+    border-radius: var(--r-lg);
+    box-shadow: var(--shadow-1);
+  }
+  .panel-header {
+    display: flex; align-items: center;
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--ink-200);
+  }
+  .panel-title {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-weight: 600;
+    color: var(--ink-600);
+    font-family: var(--font-mono);
+  }
+  .panel-header .right {
+    margin-left: auto;
+    display: flex; align-items: center; gap: 6px;
+    color: var(--ink-500);
+  }
+
+  /* ============================================================
+     LEFT SIDEBAR
+     ============================================================ */
+  .left-rail {
+    border-right: 1px solid var(--ink-200);
+    background: var(--surface);
+    overflow-y: auto;
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+
+  .rail-section {
+    border: 1px solid var(--ink-200);
+    border-radius: var(--r-md);
+    overflow: hidden;
+  }
+  .rail-section > header {
+    display: flex; align-items: center;
+    padding: 10px 12px;
+    background: var(--ink-50);
+    border-bottom: 1px solid var(--ink-200);
+  }
+  .rail-section > header .label {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--ink-700);
+    font-family: var(--font-mono);
+  }
+  .rail-section > header .num {
+    margin-left: auto;
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: var(--blue-700);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 600;
+    display: grid; place-items: center;
+    font-family: var(--font-mono);
+  }
+  .rail-section .body {
+    padding: 12px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field label {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-600);
+    display: flex; align-items: center; gap: 4px;
+  }
+  .field label .req { color: var(--red-600); }
+  .field .input,
+  .field select,
+  .field textarea {
+    border: 1px solid var(--ink-200);
+    background: var(--surface);
+    border-radius: var(--r-sm);
+    padding: 7px 9px;
+    font-size: 12.5px;
+    color: var(--ink-800);
+    outline: none;
+    transition: border-color 0.12s, box-shadow 0.12s;
+  }
+  .field .input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    border-color: var(--blue-500);
+    box-shadow: 0 0 0 3px rgba(37, 118, 209, 0.15);
+  }
+  .field textarea { resize: vertical; min-height: 60px; font-family: var(--font-sans); }
+  .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  .chip-group { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip {
+    border: 1px solid var(--ink-200);
+    background: #fff;
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 11px;
+    color: var(--ink-700);
+    user-select: none;
+  }
+  .chip.on {
+    background: var(--blue-50);
+    border-color: var(--blue-500);
+    color: var(--blue-800);
+    font-weight: 600;
+  }
+
+  /* Upload */
+  .upload {
+    border: 1.5px dashed var(--ink-300);
+    background: var(--ink-50);
+    border-radius: var(--r-md);
+    padding: 16px 12px;
+    text-align: center;
+    color: var(--ink-600);
+  }
+  .upload .ic {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: #fff;
+    border: 1px solid var(--ink-200);
+    display: grid; place-items: center;
+    margin: 0 auto 8px;
+    color: var(--blue-700);
+  }
+  .upload .t1 { font-size: 12.5px; font-weight: 600; color: var(--ink-800); }
+  .upload .t2 { font-size: 11px; margin-top: 2px; color: var(--ink-500); }
+  .upload .browse {
+    display: inline-block;
+    margin-top: 10px;
+    background: var(--blue-700);
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: var(--r-sm);
+    font-size: 11.5px;
+    font-weight: 600;
+    border: none;
+  }
+
+  .file-list { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+  .file-row {
+    display: flex; align-items: center; gap: 8px;
+    padding: 7px 9px;
+    border: 1px solid var(--ink-200);
+    border-radius: var(--r-sm);
+    background: #fff;
+    font-size: 11.5px;
+  }
+  .file-row .ftype {
+    font-family: var(--font-mono);
+    font-size: 9px;
+    background: var(--blue-50);
+    color: var(--blue-700);
+    padding: 2px 5px;
+    border-radius: 3px;
+    font-weight: 600;
+  }
+  .file-row .fname { color: var(--ink-800); font-weight: 500; flex: 1; }
+  .file-row .fsize { color: var(--ink-500); font-family: var(--font-mono); font-size: 10.5px; }
+  .file-row .fok { color: var(--green-600); }
+
+  /* ============================================================
+     CENTER (VIEWER)
+     ============================================================ */
+  .viewer {
+    padding: 16px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 14px;
+    min-width: 0;
+  }
+
+  /* Toolbar */
+  .viewer-toolbar {
+    background: var(--surface);
+    border: 1px solid var(--ink-200);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-1);
+    display: flex;
+    align-items: center;
+    padding: 6px 10px;
+    gap: 4px;
+  }
+  .tool-group {
+    display: flex; align-items: center;
+    border-right: 1px solid var(--ink-200);
+    padding: 0 6px;
+    gap: 2px;
+  }
+  .tool-group:last-child { border-right: none; }
+  .tool {
+    height: 30px;
+    padding: 0 9px;
+    border-radius: 6px;
+    border: none;
+    background: transparent;
+    color: var(--ink-700);
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+  }
+  .tool:hover { background: var(--ink-100); color: var(--ink-900); }
+  .tool.on { background: var(--blue-50); color: var(--blue-800); }
+  .tool .kbd {
+    font-family: var(--font-mono);
+    font-size: 9.5px;
+    background: var(--ink-100);
+    border: 1px solid var(--ink-200);
+    padding: 1px 4px;
+    border-radius: 3px;
+    color: var(--ink-600);
+    margin-left: 2px;
+  }
+  .toolbar-right { margin-left: auto; display: flex; align-items: center; gap: 8px; padding-right: 6px; }
+  .zoom-display {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-600);
+    background: var(--ink-50);
+    border: 1px solid var(--ink-200);
+    padding: 4px 8px;
+    border-radius: 4px;
+  }
+
+  /* Two-up viewer */
+  .two-up {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    min-height: 0;
+  }
+  .xr-frame {
+    position: relative;
+    background: #0a0f1c;
+    border: 1px solid var(--ink-900);
+    border-radius: var(--r-md);
+    overflow: hidden;
+    box-shadow: var(--shadow-2);
+    display: flex; flex-direction: column;
+  }
+  .xr-frame .xr-title {
+    position: absolute;
+    top: 10px; left: 12px;
+    font-family: var(--font-mono);
+    font-size: 10.5px;
+    color: #9bb1d4;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    z-index: 2;
+  }
+  .xr-frame .xr-title b { color: #fff; font-weight: 600; margin-right: 6px; }
+  .xr-frame .xr-corner {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: rgba(255,255,255,0.55);
+    z-index: 2;
+    line-height: 1.4;
+  }
+  .xr-corner.tr { top: 10px; right: 12px; text-align: right; }
+  .xr-corner.bl { bottom: 10px; left: 12px; }
+  .xr-corner.br { bottom: 10px; right: 12px; text-align: right; }
+
+  .xr-canvas {
+    flex: 1;
+    position: relative;
+    display: grid; place-items: center;
+    min-height: 460px;
+  }
+
+  /* Stylized X-ray placeholder */
+  .xray-svg { width: 100%; height: 100%; display: block; }
+
+  /* Heatmap legend */
+  .legend {
+    position: absolute;
+    bottom: 12px; right: 12px;
+    background: rgba(10,15,28,0.7);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 6px;
+    padding: 8px 10px;
+    color: #cfd9e8;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    z-index: 3;
+  }
+  .legend .bar {
+    width: 120px; height: 8px;
+    border-radius: 2px;
+    background: linear-gradient(to right, #1e3a8a 0%, #1d4ed8 18%, #06b6d4 36%, #84cc16 55%, #eab308 72%, #f97316 86%, #dc2626 100%);
+    margin: 4px 0;
+  }
+  .legend .labels { display: flex; justify-content: space-between; font-size: 9px; color: #93b6dc; }
+
+  /* Findings strip */
+  .findings {
+    display: grid;
+    grid-template-columns: 1fr;
+    background: var(--surface);
+    border: 1px solid var(--ink-200);
+    border-radius: var(--r-md);
+    box-shadow: var(--shadow-1);
+  }
+  .findings header {
+    display: flex; align-items: center;
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--ink-200);
+  }
+  .findings header .title { font-size: 11px; font-family: var(--font-mono); text-transform: uppercase; letter-spacing: 0.14em; font-weight: 600; color: var(--ink-700); }
+  .findings header .meta { margin-left: auto; font-size: 11px; color: var(--ink-500); font-family: var(--font-mono); }
+  .findings-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .finding {
+    padding: 12px 14px;
+    border-right: 1px solid var(--ink-200);
+    display: flex; flex-direction: column; gap: 4px;
+  }
+  .finding:last-child { border-right: none; }
+  .finding .fk {
+    font-size: 10.5px; font-family: var(--font-mono);
+    text-transform: uppercase; letter-spacing: 0.1em;
+    color: var(--ink-500);
+  }
+  .finding .fv {
+    font-weight: 600; color: var(--ink-900); font-size: 13px;
+  }
+  .finding .fbar {
+    height: 4px; background: var(--ink-100); border-radius: 2px; position: relative; overflow: hidden; margin-top: 2px;
+  }
+  .finding .fbar > i {
+    position: absolute; left: 0; top: 0; bottom: 0;
+    background: var(--blue-600); border-radius: 2px;
+  }
+  .finding.alert .fbar > i { background: var(--red-600); }
+  .finding.warn .fbar > i { background: var(--amber-500); }
+  .finding.ok .fbar > i { background: var(--green-600); }
+
+  /* ============================================================
+     RIGHT RAIL (AI ANALYSIS)
+     ============================================================ */
+  .right-rail {
+    border-left: 1px solid var(--ink-200);
+    background: var(--surface);
+    overflow-y: auto;
+    padding: 16px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+
+  /* Primary diagnosis */
+  .diagnosis {
+    border: 1px solid var(--red-600);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(220,38,38,0.10);
+  }
+  .diagnosis header {
+    background: linear-gradient(180deg, var(--red-600), #a8160e);
+    color: #fff;
+    padding: 10px 14px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .diagnosis header .pulse {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 0 0 0 rgba(255,255,255,0.7);
+    animation: pulse 1.6s infinite;
+  }
+  @keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255,255,255,0.55); }
+    70% { box-shadow: 0 0 0 8px rgba(255,255,255,0); }
+    100% { box-shadow: 0 0 0 0 rgba(255,255,255,0); }
+  }
+  .diagnosis header .label {
+    font-size: 10.5px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    font-family: var(--font-mono);
+    font-weight: 600;
+  }
+  .diagnosis header .level {
+    margin-left: auto;
+    font-size: 10px;
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,255,255,0.25);
+    padding: 2px 7px;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    font-weight: 600;
+  }
+  .diagnosis .body { padding: 16px; background: #fff; }
+  .diagnosis .diag-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--ink-900);
+    letter-spacing: -0.01em;
+    margin-bottom: 4px;
+  }
+  .diagnosis .diag-code {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-500);
+    margin-bottom: 14px;
+  }
+  .diagnosis .diag-code b { color: var(--ink-700); font-weight: 600; }
+  .conf-row { display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px; }
+  .conf-row .num {
+    font-family: var(--font-mono);
+    font-size: 28px;
+    font-weight: 600;
+    color: var(--red-600);
+    letter-spacing: -0.02em;
+    line-height: 1;
+  }
+  .conf-row .lbl {
+    font-size: 11px;
+    color: var(--ink-500);
+    text-transform: uppercase;
+    font-family: var(--font-mono);
+    letter-spacing: 0.1em;
+  }
+  .conf-bar {
+    height: 6px; background: var(--ink-100); border-radius: 3px; overflow: hidden;
+  }
+  .conf-bar > i {
+    display: block; height: 100%; width: 92.4%;
+    background: linear-gradient(90deg, #f59e0b, #dc2626);
+  }
+  .conf-meta {
+    display: flex; justify-content: space-between;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--ink-500);
+    margin-top: 5px;
+  }
+
+  /* Differential list */
+  .diff-list {
+    display: flex; flex-direction: column; gap: 6px;
+    padding: 12px 14px;
+  }
+  .diff-row {
+    display: grid;
+    grid-template-columns: 14px 1fr 56px;
+    align-items: center;
+    gap: 10px;
+    padding: 6px 0;
+  }
+  .diff-row .swatch {
+    width: 10px; height: 10px; border-radius: 2px;
+  }
+  .diff-row .name { font-size: 12.5px; color: var(--ink-800); font-weight: 500; }
+  .diff-row .name .icd { font-family: var(--font-mono); font-size: 10px; color: var(--ink-500); margin-left: 6px; }
+  .diff-row .meter {
+    grid-column: 2 / 3;
+    height: 4px; background: var(--ink-100); border-radius: 2px; overflow: hidden;
+    margin-top: 4px;
+  }
+  .diff-row .meter > i { display:block; height:100%; }
+  .diff-row .pct {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--ink-700);
+    text-align: right;
+    font-weight: 500;
+  }
+
+  /* Model info card */
+  .model-card {
+    padding: 12px 14px;
+    background: var(--ink-50);
+    border-top: 1px solid var(--ink-200);
+    border-bottom: 1px solid var(--ink-200);
+  }
+  .model-meta {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 14px;
+  }
+  .model-meta .k {
+    font-size: 10px;
+    color: var(--ink-500);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--font-mono);
+    margin-bottom: 2px;
+  }
+  .model-meta .v {
+    font-size: 12px;
+    color: var(--ink-800);
+    font-family: var(--font-mono);
+    font-weight: 500;
+  }
+
+  /* Action buttons */
+  .actions {
+    padding: 12px 14px 14px;
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .btn {
+    height: 36px;
+    border-radius: 7px;
+    border: 1px solid transparent;
+    font-size: 13px;
+    font-weight: 600;
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    transition: filter 0.12s, background 0.12s;
+  }
+  .btn.primary { background: var(--blue-700); color: #fff; }
+  .btn.primary:hover { background: var(--blue-800); }
+  .btn.danger { background: #fff; color: var(--red-700); border-color: var(--red-600); }
+  .btn.danger:hover { background: var(--red-50); }
+  .btn.subtle { background: #fff; color: var(--ink-700); border-color: var(--ink-200); }
+  .btn.subtle:hover { background: var(--ink-50); }
+  .btn.success { background: var(--green-700); color: #fff; }
+  .btn.success:hover { filter: brightness(1.08); }
+  .btn.small { height: 28px; padding: 0 10px; font-size: 11.5px; }
+
+  .btn-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  /* Section title outside panels */
+  .section-title {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--ink-600);
+    font-weight: 600;
+    padding: 0 14px;
+    margin: 4px 0 6px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .section-title .ico { color: var(--blue-700); display: grid; place-items: center; }
+
+  /* Disclosure callout */
+  .callout {
+    padding: 10px 12px;
+    background: var(--amber-50);
+    border: 1px solid #f5d99a;
+    border-radius: var(--r-sm);
+    color: #6b3d04;
+    font-size: 11.5px;
+    display: flex; gap: 9px;
+  }
+  .callout .ic { flex-shrink: 0; color: var(--amber-600); }
+  .callout b { color: #5b2f00; }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .footer {
+    background: var(--ink-900);
+    color: #cbd5e1;
+    display: flex; align-items: center;
+    padding: 0 20px;
+    gap: 18px;
+    font-size: 11px;
+    font-family: var(--font-mono);
+  }
+  .footer .sep { color: var(--ink-600); }
+  .footer .right { margin-left: auto; display: flex; gap: 14px; align-items: center; }
+  .footer .pill {
+    display: inline-flex; align-items: center; gap: 6px;
+    color: #93b6dc;
+  }
+  .footer .pill .dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--green-500);
+    box-shadow: 0 0 4px var(--green-500);
+  }
+
+  /* Scrollbar refinement */
+  .left-rail::-webkit-scrollbar,
+  .right-rail::-webkit-scrollbar { width: 8px; }
+  .left-rail::-webkit-scrollbar-thumb,
+  .right-rail::-webkit-scrollbar-thumb {
+    background: var(--ink-200);
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="app">
+
+  <!-- ============ TOP BAR ============ -->
+  <header class="topbar">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">
+        <!-- lung+ai mark -->
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3v6.5" stroke="#fff" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M9 9.5C7 10 5 12 5 15.5C5 18 6 20 8 20C9.5 20 10 18.5 10 16.5V11" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M15 9.5C17 10 19 12 19 15.5C19 18 18 20 16 20C14.5 20 14 18.5 14 16.5V11" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">ChestX AI</div>
+        <div class="brand-tag">Radiology Suite · v2.4</div>
+      </div>
+    </div>
+
+    <nav class="nav">
+      <a href="#" class="active">Workspace</a>
+      <a href="#">Worklist <span class="badge">14</span></a>
+      <a href="#">Patients</a>
+      <a href="#">Reports</a>
+      <a href="#">Analytics</a>
+      <a href="#">Admin</a>
+    </nav>
+
+    <div class="top-right">
+      <span class="env-chip"><span class="dot"></span> Production · HIPAA</span>
+      <button class="icon-btn" title="Search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+      </button>
+      <button class="icon-btn" title="Notifications">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10 21a2 2 0 0 0 4 0"/></svg>
+      </button>
+      <button class="icon-btn" title="Help">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M9.1 9a3 3 0 0 1 5.8 1c0 2-3 3-3 3"/><circle cx="12" cy="17" r="0.5"/></svg>
+      </button>
+      <div class="user-block">
+        <div class="avatar">SR</div>
+        <div>
+          <div class="name">Dr. S. Rahman</div>
+          <div class="role">RADIOLOGIST · MD</div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ PATIENT BANNER ============ -->
+  <section class="patient-banner">
+    <div class="pb-id">
+      <div class="pb-avatar">EM</div>
+      <div>
+        <div class="pb-name">Eleanor Marsh, 64 F</div>
+        <div class="pb-sub">
+          <span>MRN 008-2241-77</span>
+          <span class="sep">·</span>
+          <span>DOB 1962-04-19</span>
+          <span class="sep">·</span>
+          <span>Accession A-2026-0517-114</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pb-meta">
+      <div class="pb-meta-item">
+        <div class="k">Study</div>
+        <div class="v">CXR · PA + Lateral</div>
+      </div>
+      <div class="pb-meta-item">
+        <div class="k">Acquired</div>
+        <div class="v">May 26, 2026 · 09:14</div>
+      </div>
+      <div class="pb-meta-item">
+        <div class="k">Referring</div>
+        <div class="v">Dr. L. Okafor (ED)</div>
+      </div>
+      <div class="pb-meta-item">
+        <div class="k">Priority</div>
+        <div class="v" style="color:var(--red-600);font-weight:600;">● STAT</div>
+      </div>
+    </div>
+
+    <div class="pb-actions">
+      <button class="btn subtle small">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        Prior studies (3)
+      </button>
+      <button class="btn subtle small">Open in PACS</button>
+    </div>
+  </section>
+
+  <!-- ============ WORKSPACE ============ -->
+  <main class="workspace">
+
+    <!-- =============== LEFT RAIL =============== -->
+    <aside class="left-rail">
+
+      <section class="rail-section">
+        <header>
+          <div class="label">Patient & Study</div>
+          <div class="num">1</div>
+        </header>
+        <div class="body">
+          <div class="row-2">
+            <div class="field">
+              <label>Patient ID <span class="req">*</span></label>
+              <input class="input" value="008-2241-77" />
+            </div>
+            <div class="field">
+              <label>Accession</label>
+              <input class="input" value="A-2026-0517" />
+            </div>
+          </div>
+          <div class="field">
+            <label>Full name <span class="req">*</span></label>
+            <input class="input" value="Eleanor Marsh" />
+          </div>
+          <div class="row-2">
+            <div class="field">
+              <label>Age</label>
+              <input class="input" value="64" />
+            </div>
+            <div class="field">
+              <label>Sex</label>
+              <select>
+                <option>Female</option>
+                <option>Male</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label>Modality / View</label>
+            <select>
+              <option>CXR · PA + Lateral</option>
+              <option>CXR · AP supine</option>
+              <option>CXR · PA only</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <section class="rail-section">
+        <header>
+          <div class="label">Clinical history</div>
+          <div class="num">2</div>
+        </header>
+        <div class="body">
+          <div class="field">
+            <label>Indication</label>
+            <textarea>Productive cough × 8 days, fever 38.7 °C, pleuritic chest pain. Recent travel to South Asia.</textarea>
+          </div>
+          <div class="field">
+            <label>Risk factors</label>
+            <div class="chip-group">
+              <span class="chip on">Smoker</span>
+              <span class="chip on">Recent travel</span>
+              <span class="chip">Immunocomp.</span>
+              <span class="chip">COPD</span>
+              <span class="chip">Diabetes</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="rail-section">
+        <header>
+          <div class="label">Image input</div>
+          <div class="num">3</div>
+        </header>
+        <div class="body">
+          <div class="upload">
+            <div class="ic">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            </div>
+            <div class="t1">Drop DICOM or PNG/JPG</div>
+            <div class="t2">Max 50 MB · de-identified</div>
+            <button class="browse">Browse files</button>
+          </div>
+          <div class="file-list">
+            <div class="file-row">
+              <span class="ftype">DCM</span>
+              <span class="fname">CXR_PA_2026-05-26.dcm</span>
+              <span class="fsize">4.2 MB</span>
+              <span class="fok" title="Verified">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+            <div class="file-row">
+              <span class="ftype">DCM</span>
+              <span class="fname">CXR_LAT_2026-05-26.dcm</span>
+              <span class="fsize">3.9 MB</span>
+              <span class="fok">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <button class="btn primary" style="height:40px;">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-9-9"/><polyline points="21 4 21 10 15 10"/></svg>
+        Re-run analysis
+      </button>
+
+      <div class="callout">
+        <span class="ic">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><path d="M12 17h.01"/><path d="M10.3 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/></svg>
+        </span>
+        <div>
+          <b>Decision-support only.</b> Results must be reviewed and signed by a licensed radiologist before clinical use.
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- =============== CENTER VIEWER =============== -->
+    <section class="viewer">
+
+      <!-- Toolbar -->
+      <div class="viewer-toolbar">
+        <div class="tool-group">
+          <button class="tool on">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m13 2-2 2.5 3 3.5-3 4 4 4-3 3 2 3"/><path d="M21 12c0 5-4 9-9 9s-9-4-9-9 4-9 9-9"/></svg>
+            Pan <span class="kbd">V</span>
+          </button>
+          <button class="tool">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M8 11h6"/><path d="M11 8v6"/></svg>
+            Zoom <span class="kbd">Z</span>
+          </button>
+          <button class="tool">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20"/><path d="M12 2a15 15 0 0 1 0 20"/></svg>
+            W/L
+          </button>
+          <button class="tool">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 6H3"/><path d="M15 12H3"/><path d="M21 18H3"/></svg>
+            Measure
+          </button>
+        </div>
+
+        <div class="tool-group">
+          <button class="tool on">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/></svg>
+            Grad-CAM
+          </button>
+          <button class="tool">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
+            Bounding boxes
+          </button>
+          <button class="tool">Overlay <span class="kbd">O</span></button>
+        </div>
+
+        <div class="toolbar-right">
+          <span class="zoom-display">100% · PA</span>
+          <button class="tool"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg> Fullscreen</button>
+        </div>
+      </div>
+
+      <!-- Two-up -->
+      <div class="two-up">
+        <!-- Original -->
+        <div class="xr-frame">
+          <div class="xr-title"><b>Original</b> · PA</div>
+          <div class="xr-corner tr">
+            512 × 624<br/>16-bit
+          </div>
+          <div class="xr-corner bl">
+            MRN 008-2241-77<br/>2026-05-26 09:14
+          </div>
+          <div class="xr-corner br">
+            kVp 110 · mAs 4<br/>SID 180 cm
+          </div>
+
+          <div class="xr-canvas">
+            <!-- Stylized chest x-ray -->
+            <svg class="xray-svg" viewBox="0 0 400 480" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <radialGradient id="filmBg" cx="50%" cy="48%" r="65%">
+                  <stop offset="0%" stop-color="#1c2638"/>
+                  <stop offset="100%" stop-color="#06080f"/>
+                </radialGradient>
+                <radialGradient id="lungL" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#3b4a66" stop-opacity="0.95"/>
+                  <stop offset="70%" stop-color="#1b2436" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#0e1525" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="lungR" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#374660" stop-opacity="0.95"/>
+                  <stop offset="65%" stop-color="#1a2334" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#0e1525" stop-opacity="0"/>
+                </radialGradient>
+                <linearGradient id="spine" x1="50%" y1="0%" x2="50%" y2="100%">
+                  <stop offset="0%" stop-color="#c7d3e6" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#7a8aa5" stop-opacity="0.5"/>
+                </linearGradient>
+              </defs>
+
+              <rect width="400" height="480" fill="url(#filmBg)"/>
+
+              <!-- shoulders/clavicles -->
+              <path d="M40 130 Q 200 100 360 130" stroke="#c2cee3" stroke-width="3" stroke-opacity="0.55" fill="none"/>
+              <path d="M70 142 Q 130 116 196 132" stroke="#9aa9c4" stroke-width="2" stroke-opacity="0.7" fill="none"/>
+              <path d="M204 132 Q 270 116 330 142" stroke="#9aa9c4" stroke-width="2" stroke-opacity="0.7" fill="none"/>
+
+              <!-- ribcage (right lung area) -->
+              <g stroke="#8a99b5" stroke-opacity="0.45" fill="none" stroke-width="1.2">
+                <path d="M70 170 Q 130 200 195 200"/>
+                <path d="M65 200 Q 130 235 195 235"/>
+                <path d="M62 232 Q 130 270 195 268"/>
+                <path d="M62 266 Q 132 304 195 302"/>
+                <path d="M65 300 Q 135 338 195 336"/>
+                <path d="M72 334 Q 140 370 195 368"/>
+                <path d="M82 368 Q 145 396 195 396"/>
+              </g>
+              <!-- ribcage left -->
+              <g stroke="#8a99b5" stroke-opacity="0.45" fill="none" stroke-width="1.2">
+                <path d="M330 170 Q 270 200 205 200"/>
+                <path d="M335 200 Q 270 235 205 235"/>
+                <path d="M338 232 Q 270 270 205 268"/>
+                <path d="M338 266 Q 268 304 205 302"/>
+                <path d="M335 300 Q 265 338 205 336"/>
+                <path d="M328 334 Q 260 370 205 368"/>
+                <path d="M318 368 Q 255 396 205 396"/>
+              </g>
+
+              <!-- lung field shading -->
+              <ellipse cx="130" cy="270" rx="80" ry="120" fill="url(#lungR)"/>
+              <ellipse cx="270" cy="270" rx="80" ry="120" fill="url(#lungL)"/>
+
+              <!-- spine column -->
+              <rect x="195" y="135" width="10" height="265" rx="3" fill="url(#spine)"/>
+              <g fill="#a3b1cc" fill-opacity="0.35">
+                <rect x="194" y="160" width="12" height="2"/>
+                <rect x="194" y="190" width="12" height="2"/>
+                <rect x="194" y="220" width="12" height="2"/>
+                <rect x="194" y="250" width="12" height="2"/>
+                <rect x="194" y="280" width="12" height="2"/>
+                <rect x="194" y="310" width="12" height="2"/>
+                <rect x="194" y="340" width="12" height="2"/>
+                <rect x="194" y="370" width="12" height="2"/>
+              </g>
+
+              <!-- heart silhouette -->
+              <path d="M205 270 Q 230 300 240 350 Q 235 390 200 405 Q 175 380 178 340 Q 188 300 205 270 Z" fill="#566986" fill-opacity="0.4"/>
+
+              <!-- diaphragm -->
+              <path d="M70 405 Q 140 430 205 415 Q 270 432 332 408" stroke="#a3b1cc" stroke-opacity="0.55" fill="none" stroke-width="2"/>
+
+              <!-- subtle opacity / consolidation in right lower lobe -->
+              <ellipse cx="135" cy="345" rx="48" ry="34" fill="#dde5f3" fill-opacity="0.18"/>
+              <ellipse cx="142" cy="355" rx="28" ry="22" fill="#e8eef9" fill-opacity="0.18"/>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Grad-CAM -->
+        <div class="xr-frame">
+          <div class="xr-title"><b>Grad-CAM</b> · Activation overlay</div>
+          <div class="xr-corner tr">
+            DenseNet-121<br/>layer: conv5_block16
+          </div>
+          <div class="xr-corner bl">
+            Opacity 65%<br/>Threshold 0.42
+          </div>
+
+          <div class="xr-canvas">
+            <svg class="xray-svg" viewBox="0 0 400 480" preserveAspectRatio="xMidYMid meet">
+              <defs>
+                <radialGradient id="filmBg2" cx="50%" cy="48%" r="65%">
+                  <stop offset="0%" stop-color="#1c2638"/>
+                  <stop offset="100%" stop-color="#06080f"/>
+                </radialGradient>
+                <radialGradient id="hotspot" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#ff2e2e" stop-opacity="0.9"/>
+                  <stop offset="35%" stop-color="#ff9100" stop-opacity="0.7"/>
+                  <stop offset="65%" stop-color="#facc15" stop-opacity="0.5"/>
+                  <stop offset="85%" stop-color="#3b82f6" stop-opacity="0.25"/>
+                  <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="hotspot2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#facc15" stop-opacity="0.6"/>
+                  <stop offset="60%" stop-color="#3b82f6" stop-opacity="0.3"/>
+                  <stop offset="100%" stop-color="#1e3a8a" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="lungL2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#3b4a66" stop-opacity="0.95"/>
+                  <stop offset="70%" stop-color="#1b2436" stop-opacity="0.4"/>
+                  <stop offset="100%" stop-color="#0e1525" stop-opacity="0"/>
+                </radialGradient>
+                <radialGradient id="lungR2" cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color="#374660" stop-opacity="0.95"/>
+                  <stop offset="65%" stop-color="#1a2334" stop-opacity="0.5"/>
+                  <stop offset="100%" stop-color="#0e1525" stop-opacity="0"/>
+                </radialGradient>
+              </defs>
+
+              <rect width="400" height="480" fill="url(#filmBg2)"/>
+              <path d="M40 130 Q 200 100 360 130" stroke="#c2cee3" stroke-width="3" stroke-opacity="0.4" fill="none"/>
+              <path d="M70 142 Q 130 116 196 132" stroke="#9aa9c4" stroke-width="2" stroke-opacity="0.55" fill="none"/>
+              <path d="M204 132 Q 270 116 330 142" stroke="#9aa9c4" stroke-width="2" stroke-opacity="0.55" fill="none"/>
+
+              <g stroke="#8a99b5" stroke-opacity="0.35" fill="none" stroke-width="1.2">
+                <path d="M70 170 Q 130 200 195 200"/>
+                <path d="M65 200 Q 130 235 195 235"/>
+                <path d="M62 232 Q 130 270 195 268"/>
+                <path d="M62 266 Q 132 304 195 302"/>
+                <path d="M65 300 Q 135 338 195 336"/>
+                <path d="M72 334 Q 140 370 195 368"/>
+                <path d="M82 368 Q 145 396 195 396"/>
+                <path d="M330 170 Q 270 200 205 200"/>
+                <path d="M335 200 Q 270 235 205 235"/>
+                <path d="M338 232 Q 270 270 205 268"/>
+                <path d="M338 266 Q 268 304 205 302"/>
+                <path d="M335 300 Q 265 338 205 336"/>
+                <path d="M328 334 Q 260 370 205 368"/>
+                <path d="M318 368 Q 255 396 205 396"/>
+              </g>
+
+              <ellipse cx="130" cy="270" rx="80" ry="120" fill="url(#lungR2)"/>
+              <ellipse cx="270" cy="270" rx="80" ry="120" fill="url(#lungL2)"/>
+
+              <rect x="195" y="135" width="10" height="265" rx="3" fill="#9eadc6" fill-opacity="0.4"/>
+              <path d="M205 270 Q 230 300 240 350 Q 235 390 200 405 Q 175 380 178 340 Q 188 300 205 270 Z" fill="#566986" fill-opacity="0.35"/>
+              <path d="M70 405 Q 140 430 205 415 Q 270 432 332 408" stroke="#a3b1cc" stroke-opacity="0.45" fill="none" stroke-width="2"/>
+
+              <!-- Grad-CAM hotspots -->
+              <ellipse cx="140" cy="350" rx="78" ry="62" fill="url(#hotspot)"/>
+              <ellipse cx="150" cy="305" rx="40" ry="32" fill="url(#hotspot2)"/>
+
+              <!-- bounding box -->
+              <rect x="78" y="288" width="125" height="115" fill="none" stroke="#fff" stroke-width="1.4" stroke-dasharray="5 3" opacity="0.8"/>
+              <text x="82" y="284" font-family="IBM Plex Mono, monospace" font-size="10" fill="#fff" opacity="0.85">RLL · 0.924</text>
+            </svg>
+
+            <div class="legend">
+              <div>Activation</div>
+              <div class="bar"></div>
+              <div class="labels"><span>low</span><span>high</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Findings strip -->
+      <div class="findings">
+        <header>
+          <div class="title">Key findings · automated</div>
+          <div class="meta">Inference 1.42 s · 12 features extracted</div>
+        </header>
+        <div class="findings-grid">
+          <div class="finding alert">
+            <div class="fk">Right lower lobe</div>
+            <div class="fv">Consolidation 92%</div>
+            <div class="fbar"><i style="width:92%"></i></div>
+          </div>
+          <div class="finding warn">
+            <div class="fk">Air bronchograms</div>
+            <div class="fv">Likely 71%</div>
+            <div class="fbar"><i style="width:71%"></i></div>
+          </div>
+          <div class="finding ok">
+            <div class="fk">Pleural effusion</div>
+            <div class="fv">None detected</div>
+            <div class="fbar"><i style="width:8%"></i></div>
+          </div>
+          <div class="finding ok">
+            <div class="fk">Cardiomediastinum</div>
+            <div class="fv">Within normal limits</div>
+            <div class="fbar"><i style="width:18%"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =============== RIGHT RAIL =============== -->
+    <aside class="right-rail">
+
+      <div class="section-title">
+        <span class="ico">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a4 4 0 0 1 4 4v1.5"/><path d="M12 2a4 4 0 0 0-4 4v1.5"/><path d="M8 7.5h8a3 3 0 0 1 3 3v0a3 3 0 0 1-3 3H8a3 3 0 0 1-3-3v0a3 3 0 0 1 3-3Z"/><path d="M9 22v-3"/><path d="M15 22v-3"/></svg>
+        </span>
+        AI Analysis
+      </div>
+
+      <!-- Primary diagnosis card -->
+      <article class="diagnosis">
+        <header>
+          <span class="pulse"></span>
+          <span class="label">Primary Prediction</span>
+          <span class="level">High</span>
+        </header>
+        <div class="body">
+          <div class="diag-name">Pneumonia</div>
+          <div class="diag-code">
+            <b>ICD-10 J18.9</b> · Bacterial pneumonia, unspecified organism
+          </div>
+          <div class="conf-row">
+            <div class="num">92.4%</div>
+            <div class="lbl">Confidence</div>
+          </div>
+          <div class="conf-bar"><i></i></div>
+          <div class="conf-meta">
+            <span>Threshold ≥ 80%</span>
+            <span>σ ± 2.1%</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- Differential -->
+      <article class="panel">
+        <header class="panel-header">
+          <div class="panel-title">Differential probabilities</div>
+          <div class="right">
+            <button class="btn subtle small">All classes</button>
+          </div>
+        </header>
+
+        <div class="diff-list">
+          <div class="diff-row" style="grid-template-columns: 14px 1fr 56px;">
+            <span class="swatch" style="background:#dc2626"></span>
+            <div>
+              <div class="name">Pneumonia <span class="icd">J18.9</span></div>
+              <div class="meter"><i style="width:92%;background:#dc2626;"></i></div>
+            </div>
+            <div class="pct" style="color:#dc2626;font-weight:600;">92.4%</div>
+          </div>
+          <div class="diff-row">
+            <span class="swatch" style="background:#f59e0b"></span>
+            <div>
+              <div class="name">Tuberculosis <span class="icd">A15.0</span></div>
+              <div class="meter"><i style="width:14%;background:#f59e0b;"></i></div>
+            </div>
+            <div class="pct">4.1%</div>
+          </div>
+          <div class="diff-row">
+            <span class="swatch" style="background:#0f7e8a"></span>
+            <div>
+              <div class="name">COVID-19 <span class="icd">U07.1</span></div>
+              <div class="meter"><i style="width:10%;background:#0f7e8a;"></i></div>
+            </div>
+            <div class="pct">2.6%</div>
+          </div>
+          <div class="diff-row">
+            <span class="swatch" style="background:#0f9d58"></span>
+            <div>
+              <div class="name">Normal <span class="icd">Z00.00</span></div>
+              <div class="meter"><i style="width:3%;background:#0f9d58;"></i></div>
+            </div>
+            <div class="pct">0.9%</div>
+          </div>
+        </div>
+
+        <!-- Model info -->
+        <div class="model-card">
+          <div class="model-meta">
+            <div>
+              <div class="k">Model</div>
+              <div class="v">cxr-densenet-121</div>
+            </div>
+            <div>
+              <div class="k">Version</div>
+              <div class="v">v2.4.1 · 2026-04</div>
+            </div>
+            <div>
+              <div class="k">AUROC (val)</div>
+              <div class="v">0.962</div>
+            </div>
+            <div>
+              <div class="k">Sensitivity</div>
+              <div class="v">94.1%</div>
+            </div>
+            <div>
+              <div class="k">Specificity</div>
+              <div class="v">91.7%</div>
+            </div>
+            <div>
+              <div class="k">Inference</div>
+              <div class="v">1.42 s · GPU</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button class="btn primary">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="14" x2="15" y2="14"/></svg>
+            Generate radiology report (PDF)
+          </button>
+          <div class="btn-row">
+            <button class="btn success">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+              Confirm
+            </button>
+            <button class="btn danger">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0Z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              Flag &amp; refer
+            </button>
+          </div>
+          <button class="btn subtle">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
+            Request second read
+          </button>
+        </div>
+      </article>
+
+      <!-- Explainability / trust -->
+      <article class="panel">
+        <header class="panel-header">
+          <div class="panel-title">Explainability</div>
+        </header>
+        <div style="padding:12px 14px;display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <div style="width:38px;height:38px;border-radius:8px;background:var(--blue-50);color:var(--blue-700);display:grid;place-items:center;border:1px solid var(--blue-100);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7"/></svg>
+            </div>
+            <div style="flex:1;">
+              <div style="font-size:12.5px;font-weight:600;color:var(--ink-900);">Activation in right lower lobe</div>
+              <div style="font-size:11px;color:var(--ink-500);">Heatmap centered on the dominant opacity. Mean activation 0.78 within the bounded region.</div>
+            </div>
+          </div>
+          <div style="display:flex;gap:6px;flex-wrap:wrap;">
+            <span class="chip on">Consolidation</span>
+            <span class="chip on">Air bronchograms</span>
+            <span class="chip">Silhouette sign</span>
+            <span class="chip">No effusion</span>
+          </div>
+        </div>
+      </article>
+
+    </aside>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <span class="pill"><span class="dot"></span> Model online</span>
+    <span class="sep">·</span>
+    <span>For investigational decision-support use. Not a substitute for clinical judgement.</span>
+    <div class="right">
+      <span>FDA 510(k) pending</span>
+      <span class="sep">·</span>
+      <span>SOC 2 Type II</span>
+      <span class="sep">·</span>
+      <span>HIPAA · GDPR</span>
+      <span class="sep">·</span>
+      <span>© 2026 ChestX AI · Build 2.4.1-prod</span>
+    </div>
+  </footer>
+</div>
+</body>
+</html>
